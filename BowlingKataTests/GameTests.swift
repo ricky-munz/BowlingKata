@@ -9,5 +9,7 @@ import XCTest
 @testable import BowlingKata
 
 final class GameTests: XCTestCase {
-    
+    func testGutterGame() {
+        let game = Game()
+    }
 }
