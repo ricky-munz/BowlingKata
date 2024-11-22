@@ -8,5 +8,11 @@
 import Foundation
 
 final class Game {
-    
+    func roll(_ pins: Int) {
+
+    }
+
+    func score() -> Int {
+        0
+    }
 }

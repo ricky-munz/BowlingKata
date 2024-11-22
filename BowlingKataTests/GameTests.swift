@@ -11,5 +11,9 @@ import XCTest
 final class GameTests: XCTestCase {
     func testGutterGame() {
         let game = Game()
+        for _ in 1...20 {
+            game.roll(0)
+        }
+        XCTAssertEqual(game.score(), 0)
     }
 }
