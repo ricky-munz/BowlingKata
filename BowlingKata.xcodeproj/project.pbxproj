@@ -8,8 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		9CEAC9E42CF0C2B6002FC2D4 /* BowlingKata.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9CEAC9DB2CF0C2B6002FC2D4 /* BowlingKata.framework */; };
-		9CEAC9E92CF0C2B6002FC2D4 /* BowlingKataTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CEAC9E82CF0C2B6002FC2D4 /* BowlingKataTests.swift */; };
 		9CEAC9EA2CF0C2B6002FC2D4 /* BowlingKata.h in Headers */ = {isa = PBXBuildFile; fileRef = 9CEAC9DE2CF0C2B6002FC2D4 /* BowlingKata.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		9CEAC9F42CF0C7F1002FC2D4 /* Game.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CEAC9F32CF0C7F1002FC2D4 /* Game.swift */; };
+		9CEAC9F62CF0C81A002FC2D4 /* GameTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CEAC9F52CF0C81A002FC2D4 /* GameTests.swift */; };
+		9CEAC9F72CF0C839002FC2D4 /* Game.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CEAC9F32CF0C7F1002FC2D4 /* Game.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -26,7 +28,8 @@
 		9CEAC9DB2CF0C2B6002FC2D4 /* BowlingKata.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = BowlingKata.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9CEAC9DE2CF0C2B6002FC2D4 /* BowlingKata.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BowlingKata.h; sourceTree = "<group>"; };
 		9CEAC9E32CF0C2B6002FC2D4 /* BowlingKataTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BowlingKataTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		9CEAC9E82CF0C2B6002FC2D4 /* BowlingKataTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BowlingKataTests.swift; sourceTree = "<group>"; };
+		9CEAC9F32CF0C7F1002FC2D4 /* Game.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Game.swift; sourceTree = "<group>"; };
+		9CEAC9F52CF0C81A002FC2D4 /* GameTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -70,6 +73,7 @@
 			isa = PBXGroup;
 			children = (
 				9CEAC9DE2CF0C2B6002FC2D4 /* BowlingKata.h */,
+				9CEAC9F32CF0C7F1002FC2D4 /* Game.swift */,
 			);
 			path = BowlingKata;
 			sourceTree = "<group>";
@@ -77,7 +81,7 @@
 		9CEAC9E72CF0C2B6002FC2D4 /* BowlingKataTests */ = {
 			isa = PBXGroup;
 			children = (
-				9CEAC9E82CF0C2B6002FC2D4 /* BowlingKataTests.swift */,
+				9CEAC9F52CF0C81A002FC2D4 /* GameTests.swift */,
 			);
 			path = BowlingKataTests;
 			sourceTree = "<group>";
@@ -144,6 +148,7 @@
 				TargetAttributes = {
 					9CEAC9DA2CF0C2B6002FC2D4 = {
 						CreatedOnToolsVersion = 15.2;
+						LastSwiftMigration = 1520;
 					};
 					9CEAC9E22CF0C2B6002FC2D4 = {
 						CreatedOnToolsVersion = 15.2;
@@ -191,6 +196,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9CEAC9F42CF0C7F1002FC2D4 /* Game.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -198,7 +204,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9CEAC9E92CF0C2B6002FC2D4 /* BowlingKataTests.swift in Sources */,
+				9CEAC9F72CF0C839002FC2D4 /* Game.swift in Sources */,
+				9CEAC9F62CF0C81A002FC2D4 /* GameTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -340,6 +347,7 @@
 		9CEAC9EE2CF0C2B6002FC2D4 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;
@@ -364,6 +372,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
 				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 			};
 			name = Debug;
@@ -371,6 +380,7 @@
 		9CEAC9EF2CF0C2B6002FC2D4 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;
@@ -402,6 +412,7 @@
 		9CEAC9F12CF0C2B6002FC2D4 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 9LMP86F23V;
@@ -417,6 +428,7 @@
 		9CEAC9F22CF0C2B6002FC2D4 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 9LMP86F23V;
