@@ -16,4 +16,12 @@ final class GameTests: XCTestCase {
         }
         XCTAssertEqual(game.score(), 0)
     }
+
+    func testAllOnes() {
+        let game = Game()
+        for _ in 1...20 {
+            game.roll(1)
+        }
+        XCTAssertEqual(game.score(), 20)
+    }
 }

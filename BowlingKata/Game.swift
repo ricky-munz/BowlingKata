@@ -8,11 +8,13 @@
 import Foundation
 
 final class Game {
-    func roll(_ pins: Int) {
+    private var theScore = 0
 
+    func roll(_ pins: Int) {
+        theScore += pins
     }
 
     func score() -> Int {
-        0
+        theScore
     }
 }
