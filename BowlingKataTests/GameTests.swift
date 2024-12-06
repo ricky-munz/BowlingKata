@@ -30,11 +30,24 @@ final class GameTests: XCTestCase {
         rollMany(pins: 1, times: 20)
         XCTAssertEqual(game.score(), 20)
     }
+    
+    func testOneSpare() {
+        rollSpare()
+        game.roll(3)
+        rollMany(pins: 0, times: 17)
+        
+        XCTAssertEqual(game.score(), 16)
+    }
 
     // MARK: - Helpers
     private func rollMany(pins: Int, times: Int) {
         for _ in 1...times {
             game.roll(pins)
         }
+    }
+    
+    private func rollSpare() {
+        game.roll(5)
+        game.roll(5)
     }
 }
