@@ -40,7 +40,7 @@ final class GameTests: XCTestCase {
     }
     
     func testOneStrike() {
-        game.roll(10) // strike
+        rollStrike()
         game.roll(3)
         game.roll(4)
         rollMany(pins: 0, times: 16)
@@ -58,5 +58,9 @@ final class GameTests: XCTestCase {
     private func rollSpare() {
         game.roll(5)
         game.roll(5)
+    }
+    
+    private func rollStrike() {
+        game.roll(10)
     }
 }
