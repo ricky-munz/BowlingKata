@@ -20,12 +20,16 @@ final class Game {
         var score = 0
         var roll = 0
         for _ in 1...10 {
-            if isSpare(roll) {
+            if rolls[roll] == 10 {
+                score += 10 + rolls[roll + 1] + rolls[roll + 2]
+                roll += 1
+            } else if isSpare(roll) {
                 score += 10 + rolls[roll + 2]
+                roll += 2
             } else {
                 score += rolls[roll] + rolls[roll + 1]
+                roll += 2
             }
-            roll += 2
         }
         return score
     }
