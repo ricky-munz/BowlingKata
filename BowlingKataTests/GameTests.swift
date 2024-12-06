@@ -47,6 +47,12 @@ final class GameTests: XCTestCase {
         
         XCTAssertEqual(game.score(), 24)
     }
+    
+    func testPerfectGame() {
+        rollMany(pins: 10, times: 12)
+        
+        XCTAssertEqual(game.score(), 300)
+    }
 
     // MARK: - Helpers
     private func rollMany(pins: Int, times: Int) {
