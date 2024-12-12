@@ -1,0 +1,29 @@
+{
+  "configurations" : [
+    {
+      "id" : "17A52C46-FE3E-4C7B-BFD3-8625B94EAE20",
+      "name" : "Test Scheme Action",
+      "options" : {
+
+      }
+    }
+  ],
+  "defaultOptions" : {
+    "targetForVariableExpansion" : {
+      "containerPath" : "container:BowlingKata.xcodeproj",
+      "identifier" : "9C5367472D0B20530074B211",
+      "name" : "BowlingKata_iOS"
+    }
+  },
+  "testTargets" : [
+    {
+      "parallelizable" : false,
+      "target" : {
+        "containerPath" : "container:BowlingKata.xcodeproj",
+        "identifier" : "9C5367562D0B20550074B211",
+        "name" : "BowlingKata_iOSTests"
+      }
+    }
+  ],
+  "version" : 1
+}

@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 56;
+	objectVersion = 70;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -15,6 +15,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		9C5367582D0B20550074B211 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 9CEAC9D22CF0C2B6002FC2D4 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 9C5367472D0B20530074B211;
+			remoteInfo = BowlingKata_iOS;
+		};
 		9CEAC9E52CF0C2B6002FC2D4 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 9CEAC9D22CF0C2B6002FC2D4 /* Project object */;
@@ -25,6 +32,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		9C5367482D0B20530074B211 /* BowlingKata_iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BowlingKata_iOS.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		9C5367572D0B20550074B211 /* BowlingKata_iOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BowlingKata_iOSTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		9C5367722D0B230D0074B211 /* BowlingKata_iOS.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; path = BowlingKata_iOS.xctestplan; sourceTree = "<group>"; };
 		9CEAC9DB2CF0C2B6002FC2D4 /* BowlingKata.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = BowlingKata.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9CEAC9DE2CF0C2B6002FC2D4 /* BowlingKata.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BowlingKata.h; sourceTree = "<group>"; };
 		9CEAC9E32CF0C2B6002FC2D4 /* BowlingKataTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BowlingKataTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -32,7 +42,26 @@
 		9CEAC9F52CF0C81A002FC2D4 /* GameTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
+/* Begin PBXFileSystemSynchronizedRootGroup section */
+		9C5367492D0B20530074B211 /* BowlingKata_iOS */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = BowlingKata_iOS; sourceTree = "<group>"; };
+		9C53675A2D0B20550074B211 /* BowlingKata_iOSTests */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = BowlingKata_iOSTests; sourceTree = "<group>"; };
+/* End PBXFileSystemSynchronizedRootGroup section */
+
 /* Begin PBXFrameworksBuildPhase section */
+		9C5367452D0B20530074B211 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		9C5367542D0B20550074B211 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		9CEAC9D82CF0C2B6002FC2D4 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -54,8 +83,11 @@
 		9CEAC9D12CF0C2B6002FC2D4 = {
 			isa = PBXGroup;
 			children = (
+				9C5367722D0B230D0074B211 /* BowlingKata_iOS.xctestplan */,
 				9CEAC9DD2CF0C2B6002FC2D4 /* BowlingKata */,
 				9CEAC9E72CF0C2B6002FC2D4 /* BowlingKataTests */,
+				9C5367492D0B20530074B211 /* BowlingKata_iOS */,
+				9C53675A2D0B20550074B211 /* BowlingKata_iOSTests */,
 				9CEAC9DC2CF0C2B6002FC2D4 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -65,6 +97,8 @@
 			children = (
 				9CEAC9DB2CF0C2B6002FC2D4 /* BowlingKata.framework */,
 				9CEAC9E32CF0C2B6002FC2D4 /* BowlingKataTests.xctest */,
+				9C5367482D0B20530074B211 /* BowlingKata_iOS.app */,
+				9C5367572D0B20550074B211 /* BowlingKata_iOSTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -100,6 +134,51 @@
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
+		9C5367472D0B20530074B211 /* BowlingKata_iOS */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 9C53676F2D0B20550074B211 /* Build configuration list for PBXNativeTarget "BowlingKata_iOS" */;
+			buildPhases = (
+				9C5367442D0B20530074B211 /* Sources */,
+				9C5367452D0B20530074B211 /* Frameworks */,
+				9C5367462D0B20530074B211 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			fileSystemSynchronizedGroups = (
+				9C5367492D0B20530074B211 /* BowlingKata_iOS */,
+			);
+			name = BowlingKata_iOS;
+			packageProductDependencies = (
+			);
+			productName = BowlingKata_iOS;
+			productReference = 9C5367482D0B20530074B211 /* BowlingKata_iOS.app */;
+			productType = "com.apple.product-type.application";
+		};
+		9C5367562D0B20550074B211 /* BowlingKata_iOSTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 9C5367702D0B20550074B211 /* Build configuration list for PBXNativeTarget "BowlingKata_iOSTests" */;
+			buildPhases = (
+				9C5367532D0B20550074B211 /* Sources */,
+				9C5367542D0B20550074B211 /* Frameworks */,
+				9C5367552D0B20550074B211 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				9C5367592D0B20550074B211 /* PBXTargetDependency */,
+			);
+			fileSystemSynchronizedGroups = (
+				9C53675A2D0B20550074B211 /* BowlingKata_iOSTests */,
+			);
+			name = BowlingKata_iOSTests;
+			packageProductDependencies = (
+			);
+			productName = BowlingKata_iOSTests;
+			productReference = 9C5367572D0B20550074B211 /* BowlingKata_iOSTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 		9CEAC9DA2CF0C2B6002FC2D4 /* BowlingKata */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 9CEAC9ED2CF0C2B6002FC2D4 /* Build configuration list for PBXNativeTarget "BowlingKata" */;
@@ -143,9 +222,16 @@
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
-				LastSwiftUpdateCheck = 1520;
+				LastSwiftUpdateCheck = 1610;
 				LastUpgradeCheck = 1520;
 				TargetAttributes = {
+					9C5367472D0B20530074B211 = {
+						CreatedOnToolsVersion = 16.1;
+					};
+					9C5367562D0B20550074B211 = {
+						CreatedOnToolsVersion = 16.1;
+						TestTargetID = 9C5367472D0B20530074B211;
+					};
 					9CEAC9DA2CF0C2B6002FC2D4 = {
 						CreatedOnToolsVersion = 15.2;
 						LastSwiftMigration = 1520;
@@ -170,11 +256,27 @@
 			targets = (
 				9CEAC9DA2CF0C2B6002FC2D4 /* BowlingKata */,
 				9CEAC9E22CF0C2B6002FC2D4 /* BowlingKataTests */,
+				9C5367472D0B20530074B211 /* BowlingKata_iOS */,
+				9C5367562D0B20550074B211 /* BowlingKata_iOSTests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		9C5367462D0B20530074B211 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		9C5367552D0B20550074B211 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		9CEAC9D92CF0C2B6002FC2D4 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -192,6 +294,20 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		9C5367442D0B20530074B211 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		9C5367532D0B20550074B211 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		9CEAC9D72CF0C2B6002FC2D4 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -212,6 +328,11 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		9C5367592D0B20550074B211 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 9C5367472D0B20530074B211 /* BowlingKata_iOS */;
+			targetProxy = 9C5367582D0B20550074B211 /* PBXContainerItemProxy */;
+		};
 		9CEAC9E62CF0C2B6002FC2D4 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 9CEAC9DA2CF0C2B6002FC2D4 /* BowlingKata */;
@@ -220,6 +341,110 @@
 /* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
+		9C5367692D0B20550074B211 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"BowlingKata_iOS/Preview Content\"";
+				DEVELOPMENT_TEAM = 9LMP86F23V;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 18.1;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.rickymunz.BowlingKata-iOS";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		9C53676A2D0B20550074B211 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"BowlingKata_iOS/Preview Content\"";
+				DEVELOPMENT_TEAM = 9LMP86F23V;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 18.1;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.rickymunz.BowlingKata-iOS";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		9C53676B2D0B20550074B211 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 9LMP86F23V;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.1;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.rickymunz.BowlingKata-iOSTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/BowlingKata_iOS.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/BowlingKata_iOS";
+			};
+			name = Debug;
+		};
+		9C53676C2D0B20550074B211 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 9LMP86F23V;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.1;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.rickymunz.BowlingKata-iOSTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/BowlingKata_iOS.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/BowlingKata_iOS";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
 		9CEAC9EB2CF0C2B6002FC2D4 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -444,6 +669,24 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		9C53676F2D0B20550074B211 /* Build configuration list for PBXNativeTarget "BowlingKata_iOS" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				9C5367692D0B20550074B211 /* Debug */,
+				9C53676A2D0B20550074B211 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		9C5367702D0B20550074B211 /* Build configuration list for PBXNativeTarget "BowlingKata_iOSTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				9C53676B2D0B20550074B211 /* Debug */,
+				9C53676C2D0B20550074B211 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		9CEAC9D52CF0C2B6002FC2D4 /* Build configuration list for PBXProject "BowlingKata" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
