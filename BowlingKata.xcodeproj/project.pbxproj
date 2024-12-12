@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		9C53677F2D0B26560074B211 /* BowlingKata.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9CEAC9DB2CF0C2B6002FC2D4 /* BowlingKata.framework */; };
+		9C5367802D0B26560074B211 /* BowlingKata.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 9CEAC9DB2CF0C2B6002FC2D4 /* BowlingKata.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		9CEAC9E42CF0C2B6002FC2D4 /* BowlingKata.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9CEAC9DB2CF0C2B6002FC2D4 /* BowlingKata.framework */; };
 		9CEAC9EA2CF0C2B6002FC2D4 /* BowlingKata.h in Headers */ = {isa = PBXBuildFile; fileRef = 9CEAC9DE2CF0C2B6002FC2D4 /* BowlingKata.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		9CEAC9F42CF0C7F1002FC2D4 /* Game.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CEAC9F32CF0C7F1002FC2D4 /* Game.swift */; };
@@ -22,6 +24,13 @@
 			remoteGlobalIDString = 9C5367472D0B20530074B211;
 			remoteInfo = BowlingKata_iOS;
 		};
+		9C5367812D0B26560074B211 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 9CEAC9D22CF0C2B6002FC2D4 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 9CEAC9DA2CF0C2B6002FC2D4;
+			remoteInfo = BowlingKata;
+		};
 		9CEAC9E52CF0C2B6002FC2D4 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 9CEAC9D22CF0C2B6002FC2D4 /* Project object */;
@@ -30,6 +39,20 @@
 			remoteInfo = BowlingKata;
 		};
 /* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		9C5367832D0B26560074B211 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				9C5367802D0B26560074B211 /* BowlingKata.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		9C5367482D0B20530074B211 /* BowlingKata_iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BowlingKata_iOS.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -52,6 +75,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9C53677F2D0B26560074B211 /* BowlingKata.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -80,6 +104,13 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		9C53677E2D0B26560074B211 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		9CEAC9D12CF0C2B6002FC2D4 = {
 			isa = PBXGroup;
 			children = (
@@ -88,6 +119,7 @@
 				9CEAC9E72CF0C2B6002FC2D4 /* BowlingKataTests */,
 				9C5367492D0B20530074B211 /* BowlingKata_iOS */,
 				9C53675A2D0B20550074B211 /* BowlingKata_iOSTests */,
+				9C53677E2D0B26560074B211 /* Frameworks */,
 				9CEAC9DC2CF0C2B6002FC2D4 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -141,10 +173,12 @@
 				9C5367442D0B20530074B211 /* Sources */,
 				9C5367452D0B20530074B211 /* Frameworks */,
 				9C5367462D0B20530074B211 /* Resources */,
+				9C5367832D0B26560074B211 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				9C5367822D0B26560074B211 /* PBXTargetDependency */,
 			);
 			fileSystemSynchronizedGroups = (
 				9C5367492D0B20530074B211 /* BowlingKata_iOS */,
@@ -332,6 +366,11 @@
 			isa = PBXTargetDependency;
 			target = 9C5367472D0B20530074B211 /* BowlingKata_iOS */;
 			targetProxy = 9C5367582D0B20550074B211 /* PBXContainerItemProxy */;
+		};
+		9C5367822D0B26560074B211 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 9CEAC9DA2CF0C2B6002FC2D4 /* BowlingKata */;
+			targetProxy = 9C5367812D0B26560074B211 /* PBXContainerItemProxy */;
 		};
 		9CEAC9E62CF0C2B6002FC2D4 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
@@ -596,6 +635,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.rickymunz.BowlingKata;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
+				SUPPORTED_PLATFORMS = "macosx iphonesimulator iphoneos";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
@@ -629,6 +669,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.rickymunz.BowlingKata;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
+				SUPPORTED_PLATFORMS = "macosx iphonesimulator iphoneos";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 			};

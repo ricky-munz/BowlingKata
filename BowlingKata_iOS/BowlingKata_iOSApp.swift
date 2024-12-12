@@ -5,6 +5,7 @@
 //  Created by Ricky Munz on 12/12/24.
 //
 
+import BowlingKata
 import SwiftUI
 
 @main
