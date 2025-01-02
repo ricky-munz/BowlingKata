@@ -12,6 +12,32 @@ struct BowlingKata_iOSTests {
     
     @Test func viewModel_onInit_hasTenFrames() {
         let sut = ViewModel()
+        
         #expect(sut.framesCount == 10)
+    }
+    
+    @Test func viewModel_onInit_finalFrameIndexIsNine() {
+        let sut = ViewModel()
+        
+        #expect(sut.finalFrameIndex == 9)
+    }
+    
+    @Test func viewModel_rollZero_rollScoreIsZero() {
+        var sut = ViewModel()
+        
+        sut.roll(0)
+        
+        #expect(sut.frameScore == nil)
+        #expect(sut.rollScores == [0])
+    }
+    
+    @Test func viewModel_rollTwoZeros_frameScoreIsZero() {
+        var sut = ViewModel()
+        
+        sut.roll(0)
+        sut.roll(0)
+        
+        #expect(sut.frameScore == 0)
+        #expect(sut.rollScores == [0, 0])
     }
 }
