@@ -8,6 +8,8 @@
 import SwiftUI
 
 struct ContentView: View {
+    @State var pins: String = ""
+
     var body: some View {
         VStack {
             Grid(horizontalSpacing: 0) {
@@ -38,6 +40,20 @@ struct ContentView: View {
                 }
             }
             .padding()
+
+            HStack {
+                Text("Pins:")
+
+                TextField(text: $pins) {}
+                .textFieldStyle(.roundedBorder)
+                .fixedSize()
+            }
+            .padding(.horizontal)
+
+            Button {
+            } label: {
+                Text("Roll")
+            }
         }
     }
 }
