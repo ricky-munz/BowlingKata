@@ -9,4 +9,9 @@ import Testing
 @testable import BowlingKata_iOS
 
 struct BowlingKata_iOSTests {
+    
+    @Test func viewModel_onInit_hasTenFrames() {
+        let sut = ViewModel()
+        #expect(sut.framesCount == 10)
+    }
 }
