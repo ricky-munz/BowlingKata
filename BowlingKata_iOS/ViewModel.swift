@@ -15,7 +15,7 @@ struct ViewModel {
     
     mutating func roll(_ pins: Int) {
         if !rollScores.isEmpty {
-            frameScore = 0
+            frameScore = rollScores.first! + pins
         }
         
         rollScores.append(pins)

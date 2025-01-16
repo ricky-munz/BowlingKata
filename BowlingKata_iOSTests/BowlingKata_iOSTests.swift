@@ -40,4 +40,23 @@ struct BowlingKata_iOSTests {
         #expect(sut.frameScore == 0)
         #expect(sut.rollScores == [0, 0])
     }
+
+    @Test func viewModel_rollOne_rollScoreIsOne() {
+        var sut = ViewModel()
+        
+        sut.roll(1)
+        
+        #expect(sut.frameScore == nil)
+        #expect(sut.rollScores == [1])
+    }
+
+    @Test func viewModel_rollTwoOnes_frameScoreIsTwo() {
+        var sut = ViewModel()
+        
+        sut.roll(1)
+        sut.roll(1)
+
+        #expect(sut.frameScore == 2)
+        #expect(sut.rollScores == [1, 1])
+    }
 }
