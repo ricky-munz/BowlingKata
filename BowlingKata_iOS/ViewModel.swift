@@ -11,13 +11,22 @@ struct ViewModel {
     let framesCount = 10
     let finalFrameIndex = 9
     var frameScore: Int? = nil
-    var rollScores: [Int] = []
+    var stringRollScores: [String] = []
     
-    mutating func roll(_ pins: Int) {
-        if !rollScores.isEmpty {
-            frameScore = rollScores.first! + pins
+    private var pins: [Int] = []
+    
+    mutating func roll(_ scoredPins: Int) {
+        if let first = pins.first {
+            let rawScore = first + scoredPins
+            if rawScore < 10 {
+                frameScore = rawScore
+                stringRollScores.append(String(scoredPins))
+            } else {
+                stringRollScores.append("/")
+            }
+        } else {
+            stringRollScores.append(String(scoredPins))
         }
-        
-        rollScores.append(pins)
+        pins.append(scoredPins)
     }
 }
