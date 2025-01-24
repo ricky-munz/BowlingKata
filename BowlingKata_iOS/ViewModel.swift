@@ -24,6 +24,9 @@ struct ViewModel {
             } else {
                 stringRollScores.append("/")
             }
+        } else if scoredPins == 10 {
+            stringRollScores.append("X")
+            stringRollScores.append("")
         } else {
             stringRollScores.append(String(scoredPins))
         }

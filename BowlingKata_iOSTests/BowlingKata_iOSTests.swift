@@ -63,4 +63,14 @@ struct BowlingKata_iOSTests {
         #expect(sut.frameScore == nil)
         #expect(sut.stringRollScores == ["9", "/"])
     }
+    
+    @Test
+    func viewModel_rollStrike_frameScoreIsNil() {
+        var sut = ViewModel()
+        
+        sut.roll(10)
+        
+        #expect(sut.frameScore == nil)
+        #expect(sut.stringRollScores == ["X", ""])
+    }
 }
