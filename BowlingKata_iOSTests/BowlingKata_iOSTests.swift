@@ -27,13 +27,13 @@ struct BowlingKata_iOSTests {
         (1, "1"),
         (9, "9")
     ])
-    func viewModel_rollOnce_rollScoreMatchesInput(pins: Int, displayPins: String) {
+    func viewModel_rollOnce_rollScoreMatchesInput(roll: Int, score: String) {
         var sut = ViewModel()
 
-        sut.roll(pins)
+        sut.roll(roll)
 
         #expect(sut.frameScore == nil)
-        #expect(sut.stringRollScores == [displayPins])
+        #expect(sut.rollScores == [score])
     }
 
     @Test(arguments: [
@@ -43,14 +43,14 @@ struct BowlingKata_iOSTests {
         (1, 1, "1", "1", 2),
         (8, 1, "8", "1", 9),
     ])
-    func viewModel_rollTwice_frameScoreIsSum(firstPins: Int, secondPins: Int, displayFirstPins: String, displaySecondPins: String, score: Int) {
+    func viewModel_rollTwice_frameScoreIsSum(firstRoll: Int, secondRoll: Int, firstScore: String, secondScore: String, frameScore: Int) {
         var sut = ViewModel()
         
-        sut.roll(firstPins)
-        sut.roll(secondPins)
+        sut.roll(firstRoll)
+        sut.roll(secondRoll)
 
-        #expect(sut.frameScore == score)
-        #expect(sut.stringRollScores == [displayFirstPins, displaySecondPins])
+        #expect(sut.frameScore == frameScore)
+        #expect(sut.rollScores == [firstScore, secondScore])
     }
     
     @Test
@@ -61,7 +61,7 @@ struct BowlingKata_iOSTests {
         sut.roll(1)
         
         #expect(sut.frameScore == nil)
-        #expect(sut.stringRollScores == ["9", "/"])
+        #expect(sut.rollScores == ["9", "/"])
     }
     
     @Test
@@ -71,6 +71,6 @@ struct BowlingKata_iOSTests {
         sut.roll(10)
         
         #expect(sut.frameScore == nil)
-        #expect(sut.stringRollScores == ["X", ""])
+        #expect(sut.rollScores == ["X", ""])
     }
 }
