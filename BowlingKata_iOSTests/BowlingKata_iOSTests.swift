@@ -13,7 +13,7 @@ struct BowlingKata_iOSTests {
     @Test func viewModel_onInit_hasTenFrames() {
         let sut = ViewModel()
         
-        #expect(sut.framesCount == 10)
+        #expect(sut.frameScores.count == 10)
     }
     
     @Test func viewModel_onInit_finalFrameIndexIsNine() {
@@ -32,7 +32,7 @@ struct BowlingKata_iOSTests {
 
         sut.roll(roll)
 
-        #expect(sut.frameScores == [nil])
+        #expect(sut.frameScores == [nil, nil, nil, nil, nil, nil, nil, nil, nil, nil])
         #expect(sut.rollScores == [score])
     }
 
@@ -49,7 +49,7 @@ struct BowlingKata_iOSTests {
         sut.roll(firstRoll)
         sut.roll(secondRoll)
 
-        #expect(sut.frameScores == [frameScore])
+        #expect(sut.frameScores == [frameScore, nil, nil, nil, nil, nil, nil, nil, nil, nil])
         #expect(sut.rollScores == [firstScore, secondScore])
     }
     
@@ -60,7 +60,7 @@ struct BowlingKata_iOSTests {
         sut.roll(9)
         sut.roll(1)
         
-        #expect(sut.frameScores == [nil])
+        #expect(sut.frameScores == [nil, nil, nil, nil, nil, nil, nil, nil, nil, nil])
         #expect(sut.rollScores == ["9", "/"])
     }
     
@@ -70,7 +70,7 @@ struct BowlingKata_iOSTests {
         
         sut.roll(10)
         
-        #expect(sut.frameScores == [nil])
+        #expect(sut.frameScores == [nil, nil, nil, nil, nil, nil, nil, nil, nil, nil])
         #expect(sut.rollScores == ["X", ""])
     }
 }

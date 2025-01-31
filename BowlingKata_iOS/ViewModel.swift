@@ -8,9 +8,8 @@
 import Foundation
 
 struct ViewModel {
-    let framesCount = 10
     let finalFrameIndex = 9
-    var frameScores: [Int?] = [nil]
+    var frameScores: [Int?] = Array(repeating: nil, count: 10)
     var rollScores: [String] = []
 
     private var rolls: [Int] = []
