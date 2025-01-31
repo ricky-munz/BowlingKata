@@ -32,7 +32,7 @@ struct BowlingKata_iOSTests {
 
         sut.roll(roll)
 
-        #expect(sut.frameScore == nil)
+        #expect(sut.frameScores == [nil])
         #expect(sut.rollScores == [score])
     }
 
@@ -49,7 +49,7 @@ struct BowlingKata_iOSTests {
         sut.roll(firstRoll)
         sut.roll(secondRoll)
 
-        #expect(sut.frameScore == frameScore)
+        #expect(sut.frameScores == [frameScore])
         #expect(sut.rollScores == [firstScore, secondScore])
     }
     
@@ -60,7 +60,7 @@ struct BowlingKata_iOSTests {
         sut.roll(9)
         sut.roll(1)
         
-        #expect(sut.frameScore == nil)
+        #expect(sut.frameScores == [nil])
         #expect(sut.rollScores == ["9", "/"])
     }
     
@@ -70,7 +70,7 @@ struct BowlingKata_iOSTests {
         
         sut.roll(10)
         
-        #expect(sut.frameScore == nil)
+        #expect(sut.frameScores == [nil])
         #expect(sut.rollScores == ["X", ""])
     }
 }
