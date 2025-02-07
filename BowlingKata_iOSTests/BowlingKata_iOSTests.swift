@@ -15,12 +15,6 @@ struct BowlingKata_iOSTests {
         
         #expect(sut.frameScores.count == 10)
     }
-    
-    @Test func viewModel_onInit_finalFrameIndexIsNine() {
-        let sut = ViewModel()
-        
-        #expect(sut.finalFrameIndex == 9)
-    }
 
     @Test(arguments: [
         (0, "0"),
