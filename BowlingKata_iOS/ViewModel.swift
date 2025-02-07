@@ -14,20 +14,20 @@ struct ViewModel {
     private var rolls: [Int] = []
     
     mutating func roll(_ roll: Int) {
-        if let first = rolls.first {
-            let frameScore = first + roll
-            if frameScore < 10 {
-                frameScores[0] = frameScore
-                rollScores.append(String(roll))
-            } else {
-                rollScores.append("/")
-            }
-        } else if roll == 10 {
+        rolls.append(roll)
+        
+        if roll == 10 {
             rollScores.append("X")
             rollScores.append("")
+        } else if rolls.count > 1 && rolls[rolls.count - 1] + rolls[rolls.count - 2] == 10 {
+            rollScores.append("/")
         } else {
             rollScores.append(String(roll))
         }
-        rolls.append(roll)
+
+        if rolls.count % 2 == 0 && rolls[0] + rolls[1] != 10 {
+            let frameScore = rolls[0] + rolls[1]
+            frameScores[0] = frameScore
+        }
     }
 }
