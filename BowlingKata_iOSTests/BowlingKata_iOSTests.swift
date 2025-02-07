@@ -67,6 +67,17 @@ struct BowlingKata_iOSTests {
         #expect(sut.frameScores == makeFrameScores())
         #expect(sut.rollScores == ["X", ""])
     }
+    
+    @Test
+    func viewModel_rollThreeTimes_frameScoreIsCorrect() {
+        var sut = ViewModel()
+        
+        sut.roll(1)
+        sut.roll(1)
+        sut.roll(1)
+        
+        #expect(sut.frameScores == makeFrameScores(firstScore: 2))
+    }
 
     func makeFrameScores(firstScore: Int? = nil) -> [Int?] {
         [firstScore, nil, nil, nil, nil, nil, nil, nil, nil, nil]
