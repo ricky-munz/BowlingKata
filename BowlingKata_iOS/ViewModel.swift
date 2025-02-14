@@ -12,7 +12,8 @@ struct ViewModel {
     var rollScores: [String] = []
 
     private var rolls: [Int] = []
-    
+    private var frameIndex = 0
+
     mutating func roll(_ roll: Int) {
         rolls.append(roll)
         
@@ -26,8 +27,9 @@ struct ViewModel {
         }
 
         if rolls.count % 2 == 0 && rolls[rolls.count - 2] + rolls[rolls.count - 1] != 10 {
-            let frameScore = rolls[rolls.count - 2] + rolls[rolls.count - 1]
-            frameScores[rolls.count / 2 - 1] = frameScore
+            let lastScore = frameIndex - 1 >= 0 ? frameScores[frameIndex - 1] ?? 0 : 0
+            frameScores[frameIndex] = lastScore + rolls[rolls.count - 2] + rolls[rolls.count - 1]
+            frameIndex += 1
         }
     }
 }

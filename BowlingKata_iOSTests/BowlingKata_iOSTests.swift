@@ -89,7 +89,7 @@ struct BowlingKata_iOSTests {
         sut.roll(0)
         sut.roll(0)
         
-        #expect(sut.frameScores == makeFrameScores(firstScore: 2, secondScore: 0))
+        #expect(sut.frameScores == makeFrameScores(firstScore: 2, secondScore: 2))
         #expect(sut.rollScores == ["1", "1", "0", "0"])
     }
 
