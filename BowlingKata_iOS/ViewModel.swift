@@ -25,9 +25,9 @@ struct ViewModel {
             rollScores.append(String(roll))
         }
 
-        if rolls.count % 2 == 0 && rolls[0] + rolls[1] != 10 {
-            let frameScore = rolls[0] + rolls[1]
-            frameScores[0] = frameScore
+        if rolls.count % 2 == 0 && rolls[rolls.count - 2] + rolls[rolls.count - 1] != 10 {
+            let frameScore = rolls[rolls.count - 2] + rolls[rolls.count - 1]
+            frameScores[rolls.count / 2 - 1] = frameScore
         }
     }
 }
