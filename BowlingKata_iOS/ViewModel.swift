@@ -16,19 +16,21 @@ struct ViewModel {
 
     mutating func roll(_ roll: Int) {
         rolls.append(roll)
-        
+
+        let lastTwoRolls = rolls.suffix(2).reduce(0, +)
+
         if roll == 10 {
             rollScores.append("X")
             rollScores.append("")
-        } else if rolls.count > 1 && rolls[rolls.count - 1] + rolls[rolls.count - 2] == 10 {
+        } else if rolls.count > 1, lastTwoRolls == 10 {
             rollScores.append("/")
         } else {
             rollScores.append(String(roll))
         }
 
-        if rolls.count % 2 == 0 && rolls[rolls.count - 2] + rolls[rolls.count - 1] != 10 {
+        if rolls.count.isMultiple(of: 2), lastTwoRolls != 10 {
             let lastScore = frameIndex - 1 >= 0 ? frameScores[frameIndex - 1] ?? 0 : 0
-            frameScores[frameIndex] = lastScore + rolls[rolls.count - 2] + rolls[rolls.count - 1]
+            frameScores[frameIndex] = lastScore + lastTwoRolls
             frameIndex += 1
         }
     }
