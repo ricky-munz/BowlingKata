@@ -77,6 +77,7 @@ struct BowlingKata_iOSTests {
         sut.roll(1)
         
         #expect(sut.frameScores == makeFrameScores(firstScore: 2))
+        #expect(sut.rollScores == ["1", "1", "1"])
     }
 
     func makeFrameScores(firstScore: Int? = nil, secondScore: Int? = nil) -> [Int?] {
