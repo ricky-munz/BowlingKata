@@ -85,7 +85,7 @@ struct BowlingKata_iOSTests {
         (1, 1, "1", "1", 4),
         (0, 8, "0", "8", 10),
     ])
-    func viewModel_rollEmptySecondFrame_frameScoreIsCorrect(thirdRoll: Int, fourthRoll: Int, thirdRollScore: String, fourthRollScore: String, secondFrameScore: Int) {
+    func viewModel_rollSecondFrame_frameScoreIsCorrect(thirdRoll: Int, fourthRoll: Int, thirdRollScore: String, fourthRollScore: String, secondFrameScore: Int) {
         var sut = ViewModel()
         
         sut.roll(1)
