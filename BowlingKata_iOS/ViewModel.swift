@@ -6,17 +6,20 @@
 //
 
 import Foundation
+import BowlingKata
 
 struct ViewModel {
     var frameScores: [Int?] = Array(repeating: nil, count: 10)
     var rollScores: [String] = []
+    private let game = Game()
 
     private var rolls: [Int] = []
     private var frameIndex = 0
 
     mutating func roll(_ roll: Int) {
         rolls.append(roll)
-
+        game.roll(roll)
+        
         let lastTwoRolls = rolls.suffix(2).reduce(0, +)
 
         if roll == 10 {
@@ -27,10 +30,9 @@ struct ViewModel {
         } else {
             rollScores.append(String(roll))
         }
-
+        
         if rolls.count.isMultiple(of: 2), lastTwoRolls != 10 {
-            let lastScore = frameIndex - 1 >= 0 ? frameScores[frameIndex - 1] ?? 0 : 0
-            frameScores[frameIndex] = lastScore + lastTwoRolls
+            frameScores[frameIndex] = game.score()
             frameIndex += 1
         }
     }
