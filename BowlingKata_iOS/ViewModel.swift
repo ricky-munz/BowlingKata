@@ -35,5 +35,10 @@ struct ViewModel {
             frameScores[frameIndex] = game.score()
             frameIndex += 1
         }
+
+        if rolls.count > 2, rolls.prefix(2).reduce(0, +) == 10 {
+            frameScores[frameIndex] = game.score()
+            frameIndex += 1
+        }
     }
 }

@@ -96,6 +96,18 @@ struct BowlingKata_iOSTests {
         #expect(sut.frameScores == makeFrameScores(firstScore: 2, secondScore: secondFrameScore))
         #expect(sut.rollScores == ["1", "1", thirdRollScore, fourthRollScore])
     }
+    
+    @Test
+    func viewModel_rollSpareFirstFrame_frameScoreAddsZeroBonus() {
+        var sut = ViewModel()
+        
+        sut.roll(9)
+        sut.roll(1)
+        sut.roll(0)
+        
+        #expect(sut.frameScores == makeFrameScores(firstScore: 10))
+        #expect(sut.rollScores == ["9", "/", "0"])
+    }
 
     func makeFrameScores(firstScore: Int? = nil, secondScore: Int? = nil) -> [Int?] {
         [firstScore, secondScore, nil, nil, nil, nil, nil, nil, nil, nil]
