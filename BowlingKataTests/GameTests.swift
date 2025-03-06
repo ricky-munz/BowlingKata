@@ -24,6 +24,7 @@ final class GameTests: XCTestCase {
     func testGutterGame() {
         rollMany(pins: 0, times: 20)
         XCTAssertEqual(game.score(), 0)
+        XCTAssertEqual(game.frameScores, Array(repeating: 0, count: 10))
     }
 
     func testAllOnes() {

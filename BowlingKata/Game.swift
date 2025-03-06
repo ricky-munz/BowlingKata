@@ -8,11 +8,14 @@
 import Foundation
 
 public final class Game {
+    var frameScores: [Int]
+
     private var rolls: [Int]
     private var currentRoll: Int
-    
+
     public init() {
-        rolls = [Int](repeating: 0, count: 21)
+        frameScores = Array(repeating: 0, count: 10)
+        rolls = Array(repeating: 0, count: 21)
         currentRoll = 0
     }
     
