@@ -11,22 +11,22 @@ public final class Game {
     var frameScores: [Int]
 
     private var rolls: [Int]
-    private var currentRoll: Int
+    private var rollIndex: Int
 
     private var frameIndex: Int
 
     public init() {
         frameScores = Array(repeating: 0, count: 10)
         rolls = Array(repeating: 0, count: 21)
-        currentRoll = 0
+        rollIndex = 0
         frameIndex = 0
     }
     
     public func roll(_ pins: Int) {
-        rolls[currentRoll] = pins
-        currentRoll += 1
+        rolls[rollIndex] = pins
+        rollIndex += 1
 
-        if currentRoll.isMultiple(of: 2) {
+        if rollIndex.isMultiple(of: 2) {
             frameScores[frameIndex] = score()
             frameIndex += 1
         }
