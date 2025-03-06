@@ -13,17 +13,26 @@ public final class Game {
     private var rolls: [Int]
     private var currentRoll: Int
 
+    private var frameIndex: Int
+
     public init() {
         frameScores = Array(repeating: 0, count: 10)
         rolls = Array(repeating: 0, count: 21)
         currentRoll = 0
+        frameIndex = 0
     }
     
     public func roll(_ pins: Int) {
         rolls[currentRoll] = pins
         currentRoll += 1
+
+        if currentRoll.isMultiple(of: 2) {
+            frameScores[frameIndex] = score()
+            frameIndex += 1
+        }
     }
 
+    @discardableResult
     public func score() -> Int {
         var score = 0
         var roll = 0

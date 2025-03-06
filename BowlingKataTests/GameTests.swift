@@ -30,6 +30,7 @@ final class GameTests: XCTestCase {
     func testAllOnes() {
         rollMany(pins: 1, times: 20)
         XCTAssertEqual(game.score(), 20)
+        XCTAssertEqual(game.frameScores, [2, 4, 6, 8, 10, 12, 14, 16, 18, 20])
     }
     
     func testOneSpare() {
