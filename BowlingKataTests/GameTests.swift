@@ -33,6 +33,13 @@ final class GameTests: XCTestCase {
         XCTAssertEqual(game.frameScores, [2, 4, 6, 8, 10, 12, 14, 16, 18, 20])
     }
     
+    func testOneSpareInOneFrame() {
+        rollSpare()
+        
+        XCTAssertEqual(game.score(), 10)
+        XCTAssertEqual(game.frameScores, Array(repeating: nil, count: 10))
+    }
+    
     func testOneSpare() {
         rollSpare()
         game.roll(3)

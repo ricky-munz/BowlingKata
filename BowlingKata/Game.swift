@@ -27,7 +27,9 @@ public final class Game {
         rollIndex += 1
 
         if rollIndex.isMultiple(of: 2) {
-            frameScores[frameIndex] = score()
+            if !isSpare(0) {
+                frameScores[frameIndex] = score()
+            }
             frameIndex += 1
         }
     }
