@@ -26,8 +26,14 @@ public final class Game {
         rolls[rollIndex] = pins
         rollIndex += 1
 
+        if rollIndex == 3 {
+            if isSpare(0) {
+                frameScores[0] = 10 + pins
+            }
+        }
+
         if rollIndex.isMultiple(of: 2) {
-            if !isSpare(0) {
+            if !isSpare(rollIndex - 2) {
                 frameScores[frameIndex] = score()
             }
             frameIndex += 1

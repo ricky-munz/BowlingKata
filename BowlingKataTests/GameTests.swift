@@ -39,15 +39,16 @@ final class GameTests: XCTestCase {
         XCTAssertEqual(game.score(), 10)
         XCTAssertEqual(game.frameScores, Array(repeating: nil, count: 10))
     }
-    
+
     func testOneSpare() {
         rollSpare()
         game.roll(3)
         rollMany(pins: 0, times: 17)
         
         XCTAssertEqual(game.score(), 16)
+        XCTAssertEqual(game.frameScores, [13, 16, 16, 16, 16, 16, 16, 16, 16, 16])
     }
-    
+
     func testOneStrike() {
         rollStrike()
         game.roll(3)
