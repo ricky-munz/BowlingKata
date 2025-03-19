@@ -42,6 +42,10 @@ public final class Game {
             }
             frameIndex += 1
         }
+
+        if frameIndex == 9 {
+            frameScores[frameIndex] = score()
+        }
     }
 
     @discardableResult
