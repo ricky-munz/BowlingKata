@@ -30,6 +30,10 @@ public final class Game {
             if isSpare(0) {
                 frameScores[0] = 10 + pins
             }
+            if isStrike(0) {
+                frameScores[0] = 10 + pins + rolls[rollIndex - 2]
+                frameScores[frameIndex] = score()
+            }
         }
 
         if rollIndex.isMultiple(of: 2) {
