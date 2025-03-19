@@ -40,6 +40,13 @@ final class GameTests: XCTestCase {
         XCTAssertEqual(game.frameScores, Array(repeating: nil, count: 10))
     }
 
+    func testStrikeNotScoredWithoutBonus() {
+        rollStrike()
+
+        XCTAssertEqual(game.score(), 10)
+        XCTAssertEqual(game.frameScores, Array(repeating: nil, count: 10))
+    }
+
     func testOneSpare() {
         rollSpare()
         game.roll(3)
