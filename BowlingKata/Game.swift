@@ -33,7 +33,7 @@ public final class Game {
         }
 
         if rollIndex.isMultiple(of: 2) {
-            if !isSpare(rollIndex - 2) {
+            if !isSpare(rollIndex - 2), !isStrike(rollIndex - 2) {
                 frameScores[frameIndex] = score()
             }
             frameIndex += 1
