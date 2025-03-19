@@ -30,8 +30,8 @@ public final class Game {
             if isSpare(0) {
                 frameScores[0] = 10 + pins
             }
-            if isStrike(0) {
-                frameScores[0] = 10 + pins + rolls[rollIndex - 2]
+            if isStrike(rollIndex - 3) {
+                frameScores[0] = 10 + strikeBonus(rollIndex - 3)
                 frameScores[frameIndex] = score()
             }
         }
