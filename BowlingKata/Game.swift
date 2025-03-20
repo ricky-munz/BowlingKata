@@ -27,20 +27,23 @@ public final class Game {
         rollIndex += 1
 
         if rollIndex == 3 {
-            if isSpare(0) {
-                frameScores[0] = 10 + pins
+            if isSpare(rollIndex - 3) {
+                frameScores[frameIndex] = 10 + pins
+                frameIndex += 1
             }
             if isStrike(rollIndex - 3) {
-                frameScores[0] = 10 + strikeBonus(rollIndex - 3)
+                frameScores[frameIndex] = 10 + strikeBonus(rollIndex - 3)
+                frameIndex += 1
                 frameScores[frameIndex] = score()
+                frameIndex += 1
             }
         }
 
         if rollIndex.isMultiple(of: 2) {
             if !isSpare(rollIndex - 2), !isStrike(rollIndex - 2) {
                 frameScores[frameIndex] = score()
+                frameIndex += 1
             }
-            frameIndex += 1
         }
 
         if frameIndex == 9 {
