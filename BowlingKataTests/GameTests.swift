@@ -110,6 +110,7 @@ final class GameTests: XCTestCase {
 
         XCTAssertEqual(game.frames[0].roll1, 4)
         XCTAssertEqual(game.frames[0].roll2, nil)
+        XCTAssertEqual(game.frames[0].score, 4) // TODO: Should be nil, score for pins requires roll2 != nil
     }
 
     func test_rollTwice_setsAndScoresFrame() {
