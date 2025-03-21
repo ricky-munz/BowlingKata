@@ -92,6 +92,7 @@ final class GameTests: XCTestCase {
         game.roll(4)
 
         XCTAssertEqual(game.frames[0].roll1, 4)
+        XCTAssertEqual(game.frames[0].roll2, nil)
     }
 
     // MARK: - Helpers
