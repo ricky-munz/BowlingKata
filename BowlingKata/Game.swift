@@ -31,7 +31,12 @@ public final class Game {
         var roll1: Int?
         var roll2: Int?
         var score: Int? {
-            guard let score = roll1 else { return nil }
+            guard
+                let score = roll1,
+                score < 10
+            else {
+                return nil
+            }
             return score + (roll2 ?? 0)
         }
     }
