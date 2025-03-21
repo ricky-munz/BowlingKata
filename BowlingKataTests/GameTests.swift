@@ -45,6 +45,9 @@ final class GameTests: XCTestCase {
 
         XCTAssertEqual(game.score(), 10)
         XCTAssertEqual(game.frameScores, Array(repeating: nil, count: 10))
+        XCTAssertEqual(game.frames[0].roll1, 10)
+        XCTAssertEqual(game.frames[0].roll2, nil)
+        XCTAssertEqual(game.frames[0].score, nil)
     }
 
     func test_spare_withRequiredBonusRollAndGutterBalls_scoresGame() {
@@ -54,15 +57,6 @@ final class GameTests: XCTestCase {
         
         XCTAssertEqual(game.score(), 16)
         XCTAssertEqual(game.frameScores, [13, 16, 16, 16, 16, 16, 16, 16, 16, 16])
-    }
-
-    func test_oneStrike_doesNotScoreFrame() {
-        rollStrike()
-
-        XCTAssertEqual(game.frameScores, Array(repeating: nil, count: 10))
-        XCTAssertEqual(game.frames[0].roll1, 10)
-        XCTAssertEqual(game.frames[0].roll2, nil)
-        XCTAssertEqual(game.frames[0].score, nil)
     }
 
     func test_strike_withOneRequiredBonusRoll_doesNotScoreFrame() {
