@@ -120,6 +120,7 @@ final class GameTests: XCTestCase {
 
         XCTAssertEqual(game.frames[0].roll1, 1)
         XCTAssertEqual(game.frames[0].roll2, 2)
+        XCTAssertEqual(game.frames[0].score, 3)
     }
 
     func testRoll4TimesFrameRollsSet() {
