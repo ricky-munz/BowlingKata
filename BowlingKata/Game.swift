@@ -13,13 +13,13 @@ public final class Game {
     private var rolls: [Int]
     private var rollIndex: Int
 
-    private var frameIndex: Int
+    private var frameScoreIndex: Int
 
     public init() {
         frameScores = Array(repeating: nil, count: 10)
         rolls = Array(repeating: 0, count: 21)
         rollIndex = 0
-        frameIndex = 0
+        frameScoreIndex = 0
     }
     
     public func roll(_ pins: Int) {
@@ -28,26 +28,26 @@ public final class Game {
 
         if rollIndex == 3 {
             if isSpare(rollIndex - 3) {
-                frameScores[frameIndex] = 10 + pins
-                frameIndex += 1
+                frameScores[frameScoreIndex] = 10 + pins
+                frameScoreIndex += 1
             }
             if isStrike(rollIndex - 3) {
-                frameScores[frameIndex] = 10 + strikeBonus(rollIndex - 3)
-                frameIndex += 1
-                frameScores[frameIndex] = score()
-                frameIndex += 1
+                frameScores[frameScoreIndex] = 10 + strikeBonus(rollIndex - 3)
+                frameScoreIndex += 1
+                frameScores[frameScoreIndex] = score()
+                frameScoreIndex += 1
             }
         }
 
         if rollIndex.isMultiple(of: 2) {
             if !isSpare(rollIndex - 2), !isStrike(rollIndex - 2) {
-                frameScores[frameIndex] = score()
-                frameIndex += 1
+                frameScores[frameScoreIndex] = score()
+                frameScoreIndex += 1
             }
         }
 
-        if frameIndex == 9 {
-            frameScores[frameIndex] = score()
+        if frameScoreIndex == 9 {
+            frameScores[frameScoreIndex] = score()
         }
     }
 
