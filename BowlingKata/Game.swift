@@ -33,7 +33,11 @@ public final class Game {
     }
     
     public func roll(_ pins: Int) {
-        frames[frameIndex].roll1 = pins
+        if frames[frameIndex].roll1 == nil {
+            frames[frameIndex].roll1 = pins
+        } else {
+            frames[frameIndex].roll2 = pins
+        }
 
         rolls[rollIndex] = pins
         rollIndex += 1

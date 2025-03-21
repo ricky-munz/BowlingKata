@@ -95,6 +95,14 @@ final class GameTests: XCTestCase {
         XCTAssertEqual(game.frames[0].roll2, nil)
     }
 
+    func testRollTwiceFrameRollsSet() {
+        game.roll(1)
+        game.roll(2)
+
+        XCTAssertEqual(game.frames[0].roll1, 1)
+        XCTAssertEqual(game.frames[0].roll2, 2)
+    }
+
     // MARK: - Helpers
     private func rollMany(pins: Int, times: Int) {
         for _ in 1...times {
