@@ -31,6 +31,12 @@ public final class Game {
         var roll1: Int?
         var roll2: Int?
         var score: Int? {
+            if roll1 == 10 {
+                if let nextRoll1 = nextFrame?.roll1, let nextRoll2 = nextFrame?.roll2 {
+                    return 10 + nextRoll1 + nextRoll2
+                }
+            }
+
             guard
                 let score = roll1,
                 score < 10
@@ -39,6 +45,7 @@ public final class Game {
             }
             return score + (roll2 ?? 0)
         }
+        var nextFrame: Frame?
     }
     
     public func roll(_ pins: Int) {
@@ -49,6 +56,7 @@ public final class Game {
             frames[frameIndex].roll1 = pins
             if pins == 10, frameIndex < 9 {
                 frameIndex += 1
+                frames[frameIndex - 1].nextFrame = frames[frameIndex]
             }
         } else {
             frames[frameIndex].roll2 = pins
