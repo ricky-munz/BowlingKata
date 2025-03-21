@@ -37,6 +37,7 @@ public final class Game {
             frames[frameIndex].roll1 = pins
         } else {
             frames[frameIndex].roll2 = pins
+            frameIndex += 1
         }
 
         rolls[rollIndex] = pins
