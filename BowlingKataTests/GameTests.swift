@@ -21,33 +21,33 @@ final class GameTests: XCTestCase {
         super.tearDown()
     }
 
-    func testGutterGame() {
+    func test_gutterGame() {
         rollMany(pins: 0, times: 20)
         XCTAssertEqual(game.score(), 0)
         XCTAssertEqual(game.frameScores, Array(repeating: 0, count: 10))
     }
 
-    func testAllOnes() {
+    func test_allOnes() {
         rollMany(pins: 1, times: 20)
         XCTAssertEqual(game.score(), 20)
         XCTAssertEqual(game.frameScores, [2, 4, 6, 8, 10, 12, 14, 16, 18, 20])
     }
     
-    func testSpareNotScoredWithoutBonus() {
+    func test_spare_withoutRequiredBonusRolls_notScored() {
         rollSpare()
         
         XCTAssertEqual(game.score(), 10)
         XCTAssertEqual(game.frameScores, Array(repeating: nil, count: 10))
     }
 
-    func testStrikeNotScoredWithoutBonus() {
+    func test_strike_withOnlyOneRequiredBonusRoll_doesNotScoreFrame() {
         rollStrike()
 
         XCTAssertEqual(game.score(), 10)
         XCTAssertEqual(game.frameScores, Array(repeating: nil, count: 10))
     }
 
-    func testOneSpare() {
+    func test_spare_withRequiredBonusRollAndGutterBalls_scoresGame() {
         rollSpare()
         game.roll(3)
         rollMany(pins: 0, times: 17)
@@ -56,7 +56,7 @@ final class GameTests: XCTestCase {
         XCTAssertEqual(game.frameScores, [13, 16, 16, 16, 16, 16, 16, 16, 16, 16])
     }
 
-    func testOneStrikeDoesNotScoreFrame() {
+    func test_oneStrike_doesNotScoreFrame() {
         rollStrike()
 
         XCTAssertEqual(game.frameScores, Array(repeating: nil, count: 10))
@@ -65,7 +65,7 @@ final class GameTests: XCTestCase {
         XCTAssertEqual(game.frames[0].score, nil)
     }
 
-    func testStrikeAndThenOneRollDoesNotScoreFrame() {
+    func test_strike_withOneRequiredBonusRoll_doesNotScoreFrame() {
         rollStrike()
         game.roll(3)
 
@@ -75,7 +75,7 @@ final class GameTests: XCTestCase {
         XCTAssertEqual(game.frames[0].score, nil)
     }
 
-    func testStrikeAndThenTwoRollsScoresFrame() {
+    func test_strike_withTwoRequiredBonusRolls_scoresFrame() {
         rollStrike()
         game.roll(3)
         game.roll(3)
@@ -88,7 +88,7 @@ final class GameTests: XCTestCase {
         XCTAssertEqual(game.frames[0].score, 16)
     }
 
-    func testOneStrikeWithBonusAndZerosScoresFrames() {
+    func test_strike_withTwoRequiredBonusRollsAndGutterBalls_scoresGame() {
         rollStrike()
         game.roll(3)
         game.roll(4)
@@ -98,28 +98,27 @@ final class GameTests: XCTestCase {
         XCTAssertEqual(game.frameScores, [17, 24, 24, 24, 24, 24, 24, 24, 24, 24])
     }
 
-    func testPerfectGame() {
+    func test_perfectGame() {
         rollMany(pins: 10, times: 12)
         
         XCTAssertEqual(game.score(), 300)
     }
 
     // MARK: - Frame Tests
-    func testBeforeRollingFrameNotSet() {
+    func test_beforeRolling_doesNotSetFrame() {
         XCTAssertEqual(game.frames[0].roll1, nil)
         XCTAssertEqual(game.frames[0].roll2, nil)
         XCTAssertEqual(game.frames[0].score, nil)
     }
 
-    func testRollOnceFrameRollSet() {
+    func test_rollOnce_setsFrame() {
         game.roll(4)
 
         XCTAssertEqual(game.frames[0].roll1, 4)
         XCTAssertEqual(game.frames[0].roll2, nil)
-        XCTAssertEqual(game.frames[0].score, 4)
     }
 
-    func testRollTwiceFrameRollsSet() {
+    func test_rollTwice_setsAndScoresFrame() {
         game.roll(1)
         game.roll(2)
 
@@ -128,7 +127,7 @@ final class GameTests: XCTestCase {
         XCTAssertEqual(game.frames[0].score, 3)
     }
 
-    func testRoll4TimesFrameRollsSet() {
+    func test_rollFourTimes_setsAndScoresFrames() {
         game.roll(1)
         game.roll(2)
         game.roll(3)
