@@ -31,14 +31,8 @@ public final class Game {
         var roll1: Int?
         var roll2: Int?
         var score: Int? {
-            var score: Int?
-            if let roll1 {
-                score = roll1
-            }
-            if var score, let roll2 {
-                score += roll2
-            }
-            return score
+            guard let score = roll1 else { return nil }
+            return score + (roll2 ?? 0)
         }
     }
     
