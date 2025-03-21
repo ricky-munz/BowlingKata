@@ -100,6 +100,12 @@ final class GameTests: XCTestCase {
     }
 
     // MARK: - Frame Tests
+    func testBeforeRollingFrameNotSet() {
+        XCTAssertEqual(game.frames[0].roll1, nil)
+        XCTAssertEqual(game.frames[0].roll2, nil)
+        XCTAssertEqual(game.frames[0].score, nil)
+    }
+
     func testRollOnceFrameRollSet() {
         game.roll(4)
 

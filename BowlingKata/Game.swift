@@ -30,6 +30,7 @@ public final class Game {
     class Frame {
         var roll1: Int?
         var roll2: Int?
+        var score: Int?
     }
     
     public func roll(_ pins: Int) {
