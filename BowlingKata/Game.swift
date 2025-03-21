@@ -30,10 +30,22 @@ public final class Game {
     class Frame {
         var roll1: Int?
         var roll2: Int?
-        var score: Int?
+        var score: Int? {
+            var score: Int?
+            if let roll1 {
+                score = roll1
+            }
+            if var score, let roll2 {
+                score += roll2
+            }
+            return score
+        }
     }
     
     public func roll(_ pins: Int) {
+        rolls[rollIndex] = pins
+        rollIndex += 1
+
         if frames[frameIndex].roll1 == nil {
             frames[frameIndex].roll1 = pins
             if pins == 10, frameIndex < 9 {
@@ -45,9 +57,6 @@ public final class Game {
                 frameIndex += 1
             }
         }
-
-        rolls[rollIndex] = pins
-        rollIndex += 1
 
         if rollIndex == 3 {
             if isSpare(rollIndex - 3) {
