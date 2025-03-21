@@ -13,16 +13,27 @@ public final class Game {
     private var rolls: [Int]
     private var rollIndex: Int
 
+    private var frameIndex: Int
     private var frameScoreIndex: Int
+
+    let frames: [Frame]
 
     public init() {
         frameScores = Array(repeating: nil, count: 10)
+        frames = (0..<10).map { _ in Frame() }
         rolls = Array(repeating: 0, count: 21)
         rollIndex = 0
+        frameIndex = 0
         frameScoreIndex = 0
+    }
+
+    class Frame {
+        var roll1: Int?
     }
     
     public func roll(_ pins: Int) {
+        frames[frameIndex].roll1 = pins
+
         rolls[rollIndex] = pins
         rollIndex += 1
 

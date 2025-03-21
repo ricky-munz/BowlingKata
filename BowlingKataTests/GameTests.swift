@@ -80,11 +80,18 @@ final class GameTests: XCTestCase {
         XCTAssertEqual(game.score(), 24)
         XCTAssertEqual(game.frameScores, [17, 24, 24, 24, 24, 24, 24, 24, 24, 24])
     }
-    
+
     func testPerfectGame() {
         rollMany(pins: 10, times: 12)
         
         XCTAssertEqual(game.score(), 300)
+    }
+
+    // MARK: - Frame Tests
+    func testRollOnceFrameRollSet() {
+        game.roll(4)
+
+        XCTAssertEqual(game.frames[0].roll1, 4)
     }
 
     // MARK: - Helpers
