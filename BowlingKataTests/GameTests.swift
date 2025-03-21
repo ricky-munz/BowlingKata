@@ -77,6 +77,10 @@ final class GameTests: XCTestCase {
         game.roll(3)
 
         XCTAssertEqual(game.frameScores, [16, 22, nil, nil, nil, nil, nil, nil, nil, nil])
+        XCTAssertEqual(game.frames[0].roll1, 10)
+        XCTAssertEqual(game.frames[0].roll2, nil)
+        XCTAssertEqual(game.frames[1].roll1, 3)
+        XCTAssertEqual(game.frames[1].roll2, 3)
     }
 
     func testOneStrikeWithBonusAndZerosScoresFrames() {
