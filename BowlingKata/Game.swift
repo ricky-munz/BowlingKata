@@ -21,6 +21,14 @@ public final class Game {
     public init() {
         frameScores = Array(repeating: nil, count: 10)
         frames = (0..<10).map { _ in Frame() }
+        for (i, frame) in frames.enumerated() {
+            if i > 0 {
+                frame.previousFrame = frames[i - 1]
+            }
+            if i < frames.count - 1 {
+                frame.nextFrame = frames[i + 1]
+            }
+        }
         rolls = Array(repeating: 0, count: 21)
         rollIndex = 0
         frameIndex = 0
@@ -30,6 +38,8 @@ public final class Game {
     class Frame {
         var roll1: Int?
         var roll2: Int?
+        var previousFrame: Frame?
+        var nextFrame: Frame?
         var score: Int? {
             if roll1 == 10 {
                 if let nextRoll1 = nextFrame?.roll1, let nextRoll2 = nextFrame?.roll2 {
@@ -45,9 +55,8 @@ public final class Game {
             else {
                 return nil
             }
-            return roll1 + roll2
+            return roll1 + roll2 + (previousFrame?.score ?? 0)
         }
-        var nextFrame: Frame?
     }
     
     public func roll(_ pins: Int) {

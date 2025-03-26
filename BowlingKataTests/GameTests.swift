@@ -80,6 +80,7 @@ final class GameTests: XCTestCase {
         XCTAssertEqual(game.frames[1].roll1, 3)
         XCTAssertEqual(game.frames[1].roll2, 3)
         XCTAssertEqual(game.frames[0].score, 16)
+        XCTAssertEqual(game.frames[1].score, 22)
     }
 
     func test_strike_withTwoRequiredBonusRollsAndGutterBalls_scoresGame() {
@@ -90,6 +91,9 @@ final class GameTests: XCTestCase {
         
         XCTAssertEqual(game.score(), 24)
         XCTAssertEqual(game.frameScores, [17, 24, 24, 24, 24, 24, 24, 24, 24, 24])
+        XCTAssertEqual(game.frames[0].score, 17)
+        XCTAssertEqual(game.frames[1].score, 24)
+        XCTAssertEqual(game.frames[9].score, 24)
     }
 
     func test_perfectGame() {
@@ -110,7 +114,7 @@ final class GameTests: XCTestCase {
 
         XCTAssertEqual(game.frames[0].roll1, 4)
         XCTAssertEqual(game.frames[0].roll2, nil)
-        XCTAssertEqual(game.frames[0].score, nil) 
+        XCTAssertEqual(game.frames[0].score, nil)
     }
 
     func test_rollTwice_setsAndScoresFrame() {
@@ -133,7 +137,7 @@ final class GameTests: XCTestCase {
         XCTAssertEqual(game.frames[1].roll1, 3)
         XCTAssertEqual(game.frames[1].roll2, 4)
         XCTAssertEqual(game.frames[0].score, 3)
-        XCTAssertEqual(game.frames[1].score, 7)
+        XCTAssertEqual(game.frames[1].score, 10)
     }
 
     // MARK: - Helpers
