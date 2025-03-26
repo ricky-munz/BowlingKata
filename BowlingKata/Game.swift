@@ -38,12 +38,14 @@ public final class Game {
             }
 
             guard
-                let score = roll1,
-                score < 10
+                let roll1,
+                roll1 < 10,
+                let roll2,
+                roll1 + roll2 < 10
             else {
                 return nil
             }
-            return score + (roll2 ?? 0)
+            return roll1 + roll2
         }
         var nextFrame: Frame?
     }
