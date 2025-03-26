@@ -38,6 +38,7 @@ final class GameTests: XCTestCase {
         
         XCTAssertEqual(game.score(), 10)
         XCTAssertEqual(game.frameScores, Array(repeating: nil, count: 10))
+        XCTAssertEqual(game.frames[0].score, nil)
     }
 
     func test_strike_withOnlyOneRequiredBonusRoll_doesNotScoreFrame() {
@@ -57,6 +58,9 @@ final class GameTests: XCTestCase {
         
         XCTAssertEqual(game.score(), 16)
         XCTAssertEqual(game.frameScores, [13, 16, 16, 16, 16, 16, 16, 16, 16, 16])
+        XCTAssertEqual(game.frames[0].score, 13)
+        XCTAssertEqual(game.frames[1].score, 16)
+        XCTAssertEqual(game.frames[9].score, 16)
     }
 
     func test_strike_withOneRequiredBonusRoll_doesNotScoreFrame() {

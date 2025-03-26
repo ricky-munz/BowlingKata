@@ -46,7 +46,15 @@ public final class Game {
                     return 10 + nextRoll1 + nextRoll2
                 }
             }
-
+            if
+                let roll1,
+                let roll2,
+                roll1 + roll2 == 10,
+                let nextRoll = nextFrame?.roll1
+            {
+                return 10 + nextRoll
+            }
+            
             guard
                 let roll1,
                 roll1 < 10,
