@@ -1,0 +1,15 @@
+{
+  "originHash" : "990c7f1dcf9a660750a04fe0ebca71a8455d30b03f9ff35f28f3781e50fecb02",
+  "pins" : [
+    {
+      "identity" : "datastructures",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/jirving887/DataStructures.git",
+      "state" : {
+        "branch" : "main",
+        "revision" : "35882be300be3616f5f304e2e68da66e5282a4e0"
+      }
+    }
+  ],
+  "version" : 3
+}
