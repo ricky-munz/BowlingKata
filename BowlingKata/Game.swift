@@ -41,11 +41,8 @@ public final class Game {
         var roll3: Int?
         var previousFrame: Frame?
         var nextFrame: Frame?
-        var isLastFrame: Bool {
-            nextFrame == nil
-        }
         var score: Int? {
-            if isLastFrame, let roll1, let roll2, let roll3 {
+            if let roll1, let roll2, let roll3 {
                 return roll1 + roll2 + roll3 + previousScore
             }
             if isStrike, let nextTwoRolls {
