@@ -48,12 +48,8 @@ public final class Game {
             if isLastFrame, let roll1, let roll2, let roll3 {
                 return roll1 + roll2 + roll3 + previousScore
             }
-            if isStrike {
-                if let nextRoll1 = nextFrame?.roll1, let nextRoll2 = nextFrame?.roll2 {
-                    return 10 + nextRoll1 + nextRoll2 + previousScore
-                } else if let nextRoll1 = nextFrame?.roll1, let nextRoll2 = nextFrame?.nextFrame?.roll1 {
-                    return 10 + nextRoll1 + nextRoll2 + previousScore
-                }
+            if isStrike, let nextTwoRolls {
+                return 10 + nextTwoRolls + previousScore
             }
             if
                 isSpare,
@@ -63,10 +59,10 @@ public final class Game {
             }
             
             guard
-                let roll1,
-                let roll2,
                 !isStrike,
-                !isSpare
+                !isSpare,
+                let roll1,
+                let roll2
             else {
                 return nil
             }
@@ -86,6 +82,18 @@ public final class Game {
                 return false
             }
             return roll1 + roll2 == 10
+        }
+
+        private var nextTwoRolls: Int? {
+            guard let nextRoll1 = nextFrame?.roll1 else {
+                return nil
+            }
+
+            guard let nextRoll2 = nextFrame?.roll2 ?? nextFrame?.nextFrame?.roll1 else {
+                return nil
+            }
+
+            return nextRoll1 + nextRoll2
         }
     }
     
