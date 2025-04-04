@@ -47,16 +47,16 @@ public final class Game {
         var score: Int? {
             if isLastFrame {
                 if let roll1, roll1 == 10, let roll2, let roll3 {
-                    return roll1 + roll2 + roll3 + (previousFrame?.score ?? 0)
+                    return roll1 + roll2 + roll3 + previousScore
                 } else if let roll1, let roll2, roll1 + roll2 == 10, let roll3 {
-                    return roll1 + roll2 + roll3 + (previousFrame?.score ?? 0)
+                    return roll1 + roll2 + roll3 + previousScore
                 }
             }
             if roll1 == 10 {
                 if let nextRoll1 = nextFrame?.roll1, let nextRoll2 = nextFrame?.roll2 {
-                    return 10 + nextRoll1 + nextRoll2 + (previousFrame?.score ?? 0)
+                    return 10 + nextRoll1 + nextRoll2 + previousScore
                 } else if let nextRoll1 = nextFrame?.roll1, let nextRoll2 = nextFrame?.nextFrame?.roll1 {
-                    return 10 + nextRoll1 + nextRoll2 + (previousFrame?.score ?? 0)
+                    return 10 + nextRoll1 + nextRoll2 + previousScore
                 }
             }
             if
@@ -65,7 +65,7 @@ public final class Game {
                 roll1 + roll2 == 10,
                 let nextRoll = nextFrame?.roll1
             {
-                return 10 + nextRoll + (previousFrame?.score ?? 0)
+                return 10 + nextRoll + previousScore
             }
             
             guard
@@ -76,7 +76,11 @@ public final class Game {
             else {
                 return nil
             }
-            return roll1 + roll2 + (previousFrame?.score ?? 0)
+            return roll1 + roll2 + previousScore
+        }
+
+        private var previousScore: Int {
+            previousFrame?.score ?? 0
         }
     }
     
