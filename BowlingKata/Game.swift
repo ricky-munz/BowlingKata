@@ -42,19 +42,23 @@ public final class Game {
         var previousFrame: Frame?
         var nextFrame: Frame?
         var score: Int? {
+            guard let localScore else {
+                return nil
+            }
+            return localScore + previousScore
+        }
+
+        private var localScore: Int? {
             if let roll1, let roll2, let roll3 {
-                return roll1 + roll2 + roll3 + previousScore
+                return roll1 + roll2 + roll3
             }
             if isStrike, let nextTwoRolls {
-                return 10 + nextTwoRolls + previousScore
+                return 10 + nextTwoRolls
             }
-            if
-                isSpare,
-                let nextRoll = nextFrame?.roll1
-            {
-                return 10 + nextRoll + previousScore
+            if isSpare, let nextRoll = nextFrame?.roll1 {
+                return 10 + nextRoll
             }
-            
+
             guard
                 !isStrike,
                 !isSpare,
@@ -63,7 +67,7 @@ public final class Game {
             else {
                 return nil
             }
-            return roll1 + roll2 + previousScore
+            return roll1 + roll2
         }
 
         private var previousScore: Int {
