@@ -49,23 +49,17 @@ public final class Game {
         }
 
         private var localScore: Int? {
-            if roll3 != nil {
-                return (roll1 ?? 0) + (roll2 ?? 0) + bonusScore
-            }
-            if isStrike, nextTwoRolls != nil {
-                return (roll1 ?? 0) + (roll2 ?? 0) + bonusScore
-            }
-            if isSpare {
-                if nextFrame?.roll1 != nil {
-                    return (roll1 ?? 0) + (roll2 ?? 0) + bonusScore
-                }
+            guard bonusScore != nil else {
                 return nil
             }
 
-            if let roll1, let roll2 {
-                return roll1 + roll2 + bonusScore
+            if !isStrike,
+               !isSpare,
+               roll2 == nil {
+                return nil
             }
-            return nil
+
+            return (roll1 ?? 0) + (roll2 ?? 0) + (bonusScore ?? 0)
         }
 
         private var previousScore: Int {
@@ -95,15 +89,15 @@ public final class Game {
             return nextRoll1 + nextRoll2
         }
 
-        private var bonusScore: Int {
+        private var bonusScore: Int? {
             if let roll3 {
                 return roll3
             }
-            if isStrike, let nextTwoRolls {
+            if isStrike {
                 return nextTwoRolls
             }
-            if isSpare, let nextRoll = nextFrame?.roll1 {
-                return nextRoll
+            if isSpare {
+                return nextFrame?.roll1
             }
             return 0
         }
