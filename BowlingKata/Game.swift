@@ -53,9 +53,7 @@ public final class Game {
                 return nil
             }
 
-            if !isStrike,
-               !isSpare,
-               roll2 == nil {
+            if !isStrike, roll2 == nil {
                 return nil
             }
 
