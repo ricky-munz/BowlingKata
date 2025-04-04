@@ -76,11 +76,10 @@ public final class Game {
         }
 
         private var nextTwoRolls: Int? {
-            guard let nextRoll1 = nextFrame?.roll1 else {
-                return nil
-            }
-
-            guard let nextRoll2 = nextFrame?.roll2 ?? nextFrame?.nextFrame?.roll1 else {
+            guard
+                let nextRoll1 = nextFrame?.roll1,
+                let nextRoll2 = nextFrame?.roll2 ?? nextFrame?.nextFrame?.roll1
+            else {
                 return nil
             }
 
