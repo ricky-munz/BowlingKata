@@ -48,6 +48,8 @@ public final class Game {
             if isLastFrame {
                 if roll1 == 10, let roll2, let roll3 {
                     return 10 + roll2 + roll3 + (previousFrame?.score ?? 0)
+                } else if let roll1, let roll2, roll1 + roll2 == 10, let roll3 {
+                    return 10 + roll3 + (previousFrame?.score ?? 0)
                 }
             }
             if roll1 == 10 {
