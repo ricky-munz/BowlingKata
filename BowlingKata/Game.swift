@@ -44,6 +44,8 @@ public final class Game {
             if roll1 == 10 {
                 if let nextRoll1 = nextFrame?.roll1, let nextRoll2 = nextFrame?.roll2 {
                     return 10 + nextRoll1 + nextRoll2
+                } else if let nextRoll1 = nextFrame?.roll1, let nextRoll2 = nextFrame?.nextFrame?.roll1 {
+                    return 10 + nextRoll1 + nextRoll2
                 }
             }
             if

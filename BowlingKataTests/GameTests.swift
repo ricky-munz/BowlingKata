@@ -100,6 +100,16 @@ final class GameTests: XCTestCase {
         XCTAssertEqual(game.frames[9].score, 24)
     }
 
+    func test_threeStrikes_scoresFirstFrame() {
+        rollStrike()
+        rollStrike()
+        rollStrike()
+
+        XCTAssertEqual(game.frames[0].score, 30)
+        XCTAssertEqual(game.frames[1].score, nil)
+        XCTAssertEqual(game.frames[2].score, nil)
+    }
+
     func test_perfectGame() {
         rollMany(pins: 10, times: 12)
         
