@@ -88,13 +88,13 @@ public final class Game {
                 frameIndex += 1
                 frames[frameIndex - 1].nextFrame = frames[frameIndex]
             }
-        } else if frames[frameIndex].isLastFrame, frames[frameIndex].roll2 != nil {
-            frames[frameIndex].roll3 = pins
-        } else {
+        } else if frames[frameIndex].roll2 == nil {
             frames[frameIndex].roll2 = pins
             if frameIndex < 9 {
                 frameIndex += 1
             }
+        } else {
+            frames[frameIndex].roll3 = pins
         }
 
         if rollIndex == 3 {
