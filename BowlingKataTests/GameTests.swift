@@ -114,6 +114,10 @@ final class GameTests: XCTestCase {
         rollMany(pins: 10, times: 12)
         
         XCTAssertEqual(game.score(), 300)
+        XCTAssertEqual(game.frames[0].score, 30)
+        XCTAssertEqual(game.frames[1].score, 60)
+        XCTAssertEqual(game.frames[2].score, 90)
+        XCTAssertEqual(game.frames[9].score, 300)
     }
 
     // MARK: - Frame Tests

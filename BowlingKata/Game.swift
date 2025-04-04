@@ -38,14 +38,23 @@ public final class Game {
     class Frame {
         var roll1: Int?
         var roll2: Int?
+        var roll3: Int?
         var previousFrame: Frame?
         var nextFrame: Frame?
+        var isLastFrame: Bool {
+            nextFrame == nil
+        }
         var score: Int? {
+            if isLastFrame {
+                if roll1 == 10, let roll2, let roll3 {
+                    return 10 + roll2 + roll3 + (previousFrame?.score ?? 0)
+                }
+            }
             if roll1 == 10 {
                 if let nextRoll1 = nextFrame?.roll1, let nextRoll2 = nextFrame?.roll2 {
-                    return 10 + nextRoll1 + nextRoll2
+                    return 10 + nextRoll1 + nextRoll2 + (previousFrame?.score ?? 0)
                 } else if let nextRoll1 = nextFrame?.roll1, let nextRoll2 = nextFrame?.nextFrame?.roll1 {
-                    return 10 + nextRoll1 + nextRoll2
+                    return 10 + nextRoll1 + nextRoll2 + (previousFrame?.score ?? 0)
                 }
             }
             if
@@ -79,6 +88,8 @@ public final class Game {
                 frameIndex += 1
                 frames[frameIndex - 1].nextFrame = frames[frameIndex]
             }
+        } else if frames[frameIndex].isLastFrame, frames[frameIndex].roll2 != nil {
+            frames[frameIndex].roll3 = pins
         } else {
             frames[frameIndex].roll2 = pins
             if frameIndex < 9 {
