@@ -120,6 +120,17 @@ final class GameTests: XCTestCase {
         XCTAssertEqual(game.frames[9].score, 300)
     }
 
+    func test_strikeInLastFrame_thenSpare_scoresBonus() {
+        rollMany(pins: 10, times: 9)
+
+        rollStrike()
+        game.roll(3)
+        game.roll(7)
+
+        XCTAssertEqual(game.frames[8].score, 263)
+        XCTAssertEqual(game.frames[9].score, 283)
+    }
+
     // MARK: - Frame Tests
     func test_beforeRolling_doesNotSetFrame() {
         XCTAssertEqual(game.frames[0].roll1, nil)
