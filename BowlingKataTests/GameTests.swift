@@ -63,6 +63,15 @@ final class GameTests: XCTestCase {
         XCTAssertEqual(game.frames[9].score, 16)
     }
 
+    func test_rollZeroThenTen_scoresSpare() {
+        game.roll(0)
+        game.roll(10)
+        game.roll(3)
+
+        XCTAssertEqual(game.frames[0].score, 13)
+        XCTAssertEqual(game.frames[1].score, nil)
+    }
+
     func test_strike_withOneRequiredBonusRoll_doesNotScoreFrame() {
         rollStrike()
         game.roll(3)
@@ -146,7 +155,7 @@ final class GameTests: XCTestCase {
         
         game.roll(3)
         game.roll(4)
-        
+
         XCTAssertEqual(game.frames[8].score, 0)
         XCTAssertEqual(game.frames[9].score, 7)
     }
