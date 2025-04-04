@@ -49,7 +49,7 @@ public final class Game {
         }
 
         private var localScore: Int? {
-            guard bonusScore != nil else {
+            guard let bonusScore else {
                 return nil
             }
 
@@ -57,7 +57,7 @@ public final class Game {
                 return nil
             }
 
-            return (roll1 ?? 0) + (roll2 ?? 0) + (bonusScore ?? 0)
+            return (roll1 ?? 0) + (roll2 ?? 0) + bonusScore
         }
 
         private var previousScore: Int {
