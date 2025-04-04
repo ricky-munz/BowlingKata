@@ -45,12 +45,8 @@ public final class Game {
             nextFrame == nil
         }
         var score: Int? {
-            if isLastFrame {
-                if let roll1, roll1 == 10, let roll2, let roll3 {
-                    return roll1 + roll2 + roll3 + previousScore
-                } else if let roll1, let roll2, roll1 + roll2 == 10, let roll3 {
-                    return roll1 + roll2 + roll3 + previousScore
-                }
+            if isLastFrame, let roll1, let roll2, let roll3 {
+                return roll1 + roll2 + roll3 + previousScore
             }
             if roll1 == 10 {
                 if let nextRoll1 = nextFrame?.roll1, let nextRoll2 = nextFrame?.roll2 {
