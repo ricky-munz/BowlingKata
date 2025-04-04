@@ -65,7 +65,7 @@ public final class Game {
                 roll1 + roll2 == 10,
                 let nextRoll = nextFrame?.roll1
             {
-                return 10 + nextRoll
+                return 10 + nextRoll + (previousFrame?.score ?? 0)
             }
             
             guard

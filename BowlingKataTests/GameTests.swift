@@ -72,6 +72,19 @@ final class GameTests: XCTestCase {
         XCTAssertEqual(game.frames[1].score, nil)
     }
 
+    func test_rollMultipleSpares_scoresFrames() {
+        game.roll(3)
+        game.roll(7)
+        game.roll(5)
+        game.roll(5)
+        game.roll(4)
+        game.roll(6)
+
+        XCTAssertEqual(game.frames[0].score, 15)
+        XCTAssertEqual(game.frames[1].score, 29)
+        XCTAssertEqual(game.frames[2].score, nil)
+    }
+
     func test_strike_withOneRequiredBonusRoll_doesNotScoreFrame() {
         rollStrike()
         game.roll(3)
