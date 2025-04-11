@@ -16,12 +16,8 @@ struct ViewModel {
     private var frameIndex = 0
     
     init() {
-        frameScores = game.frames.map {
-            if let score = $0.score {
-                return String(score)
-            } else {
-                return ""
-            }
+        frameScores = game.frames.map { frame in
+            frame.score.map(String.init) ?? ""
         }
     }
     
@@ -50,12 +46,8 @@ struct ViewModel {
             }
         }
         
-        frameScores = game.frames.map {
-            if let score = $0.score {
-                return String(score)
-            } else {
-                return ""
-            }
+        frameScores = game.frames.map { frame in
+            frame.score.map(String.init) ?? ""
         }
     }
 }
