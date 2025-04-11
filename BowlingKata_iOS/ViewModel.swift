@@ -25,22 +25,21 @@ struct ViewModel {
         game.roll(roll)
         
         rollScores = []
-        game.frames.forEach { frame in
-            if let roll1 = frame.roll1 {
-                switch roll1 {
-                    case 10:
-                    rollScores.append("X")
-                    rollScores.append("")
-                default:
-                    rollScores.append(String(roll1))
-                }
+        for frame in game.frames {
+            if frame.isStrike {
+                rollScores.append("X")
+                rollScores.append("")
+                continue
             }
-            if let roll1 = frame.roll1, let roll2 = frame.roll2 {
-                if roll1 + roll2 == 10 {
-                    rollScores.append("/")
-                } else {
-                    rollScores.append(String(roll2))
-                }
+            if let roll1 = frame.roll1 {
+                rollScores.append(String(roll1))
+            }
+            if frame.isSpare {
+                rollScores.append("/")
+                continue
+            }
+            if let roll2 = frame.roll2 {
+                rollScores.append(String(roll2))
             }
             if let roll3 = frame.roll3 {
                 rollScores.append(String(roll3))

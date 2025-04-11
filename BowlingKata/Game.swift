@@ -60,11 +60,11 @@ public final class Game {
             previousFrame?.score ?? 0
         }
 
-        private var isStrike: Bool {
+        public var isStrike: Bool {
             roll1 == 10
         }
 
-        private var isSpare: Bool {
+        public var isSpare: Bool {
             guard let roll1, let roll2 else {
                 return false
             }
