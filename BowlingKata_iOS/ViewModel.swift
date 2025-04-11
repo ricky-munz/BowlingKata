@@ -13,7 +13,6 @@ struct ViewModel {
     var rollScores: [String] = []
     private let game = Game()
     
-    private var rolls: [Int] = []
     private var frameIndex = 0
     
     init() {
@@ -21,7 +20,6 @@ struct ViewModel {
     }
     
     mutating func roll(_ roll: Int) {
-        rolls.append(roll)
         game.roll(roll)
         
         rollScores = []
