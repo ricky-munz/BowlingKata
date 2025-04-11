@@ -47,15 +47,6 @@ struct ViewModel {
             }
         }
         
-        let lastTwoRolls = rolls.suffix(2).reduce(0, +)
-        if rolls.count.isMultiple(of: 2), lastTwoRolls != 10 {
-            frameScores[frameIndex] = game.frames[frameIndex].score
-            frameIndex += 1
-        }
-
-        if rolls.count > 2, rolls.prefix(2).reduce(0, +) == 10 {
-            frameScores[frameIndex] = game.frames[frameIndex].score
-            frameIndex += 1
-        }
+        frameScores = game.frames.map { $0.score }
     }
 }
