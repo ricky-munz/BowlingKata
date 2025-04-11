@@ -16,7 +16,7 @@ public final class Game {
     private var frameIndex: Int
     private var frameScoreIndex: Int
 
-    let frames: [Frame]
+    public let frames: [Frame]
 
     public init() {
         frameScores = Array(repeating: nil, count: 10)
@@ -35,13 +35,13 @@ public final class Game {
         frameScoreIndex = 0
     }
 
-    class Frame {
-        var roll1: Int?
-        var roll2: Int?
-        var roll3: Int?
-        var previousFrame: Frame?
-        var nextFrame: Frame?
-        var score: Int? {
+    public class Frame {
+        public var roll1: Int?
+        public var roll2: Int?
+        public var roll3: Int?
+        public var previousFrame: Frame?
+        public var nextFrame: Frame?
+        public var score: Int? {
             guard let localScore else {
                 return nil
             }
@@ -99,7 +99,7 @@ public final class Game {
             return 0
         }
     }
-    
+
     public func roll(_ pins: Int) {
         rolls[rollIndex] = pins
         rollIndex += 1
@@ -162,23 +162,23 @@ public final class Game {
         }
         return score
     }
-    
+
     private func isSpare(_ roll: Int) -> Bool {
         rolls[roll] + rolls[roll + 1] == 10
     }
-    
+
     private func isStrike(_ roll: Int) -> Bool {
         return rolls[roll] == 10
     }
-        
+
     private func strikeBonus(_ roll: Int) -> Int {
         rolls[roll + 1] + rolls[roll + 2]
     }
-    
+
     private func spareBonus(_ roll: Int) -> Int {
         rolls[roll + 2]
     }
-    
+
     private func sumOfBallsInFrame(_ roll: Int) -> Int {
         rolls[roll] + rolls[roll + 1]
     }

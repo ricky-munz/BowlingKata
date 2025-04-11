@@ -9,13 +9,17 @@ import Foundation
 import BowlingKata
 
 struct ViewModel {
-    var frameScores: [Int?] = Array(repeating: nil, count: 10)
+    var frameScores: [Int?]
     var rollScores: [String] = []
     private let game = Game()
-
+    
     private var rolls: [Int] = []
     private var frameIndex = 0
-
+    
+    init() {
+        frameScores = game.frames.map { $0.score }
+    }
+    
     mutating func roll(_ roll: Int) {
         rolls.append(roll)
         game.roll(roll)
