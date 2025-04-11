@@ -9,12 +9,13 @@ import SwiftUI
 
 struct ContentView: View {
     @State var pins: String = ""
+    @State private var viewModel = ViewModel()
 
     var body: some View {
         VStack {
             Grid(horizontalSpacing: 0) {
                 GridRow {
-                    ForEach(0..<10) { _ in
+                    ForEach(viewModel.frameScores, id: \.self) { score in
                         ZStack {
                             Color(.clear)
                                 .border(.black)
@@ -29,8 +30,9 @@ struct ContentView: View {
                                 }
                                 .frame(maxWidth: .infinity, alignment: .trailing)
 
-                                Spacer()
-                                Spacer()
+                                Text(score)
+                                    .frame(maxWidth: .infinity, alignment: .leading)
+                                    .padding(.leading)
                             }
                             .frame(maxHeight: .infinity, alignment: .top)
                         }
@@ -51,6 +53,10 @@ struct ContentView: View {
             .padding(.horizontal)
 
             Button {
+                guard let pinsInt = Int(pins) else {
+                    return
+                }
+                viewModel.roll(pinsInt)
             } label: {
                 Text("Roll")
             }

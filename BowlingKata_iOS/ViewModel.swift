@@ -8,7 +8,8 @@
 import Foundation
 import BowlingKata
 
-struct ViewModel {
+@Observable
+class ViewModel {
     var frameScores: [String]
     var rollScores: [String] = []
     private let game = Game()
@@ -21,7 +22,7 @@ struct ViewModel {
         }
     }
     
-    mutating func roll(_ roll: Int) {
+    func roll(_ roll: Int) {
         game.roll(roll)
         
         rollScores = []
