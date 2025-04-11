@@ -9,9 +9,6 @@ import Foundation
 
 public final class Game {
 
-    private var rolls: [Int]
-    private var rollIndex: Int
-
     private var frameIndex: Int
 
     public let frames: [Frame]
@@ -26,8 +23,6 @@ public final class Game {
                 frame.nextFrame = frames[i + 1]
             }
         }
-        rolls = Array(repeating: 0, count: 21)
-        rollIndex = 0
         frameIndex = 0
     }
 
@@ -97,9 +92,6 @@ public final class Game {
     }
 
     public func roll(_ pins: Int) {
-        rolls[rollIndex] = pins
-        rollIndex += 1
-
         if frames[frameIndex].roll1 == nil {
             frames[frameIndex].roll1 = pins
             if pins == 10, frameIndex < 9 {
