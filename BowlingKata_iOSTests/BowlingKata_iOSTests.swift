@@ -31,13 +31,13 @@ struct BowlingKata_iOSTests {
     }
 
     @Test(arguments: [
-        (0, 0, "0", "0", 0),
-        (0, 1, "0", "1", 1),
-        (1, 0, "1", "0", 1),
-        (1, 1, "1", "1", 2),
-        (8, 1, "8", "1", 9),
+        (0, 0, "0", "0", "0"),
+        (0, 1, "0", "1", "1"),
+        (1, 0, "1", "0", "1"),
+        (1, 1, "1", "1", "2"),
+        (8, 1, "8", "1", "9"),
     ])
-    func viewModel_rollTwice_frameScoreIsSum(firstRoll: Int, secondRoll: Int, firstScore: String, secondScore: String, frameScore: Int) {
+    func viewModel_rollTwice_frameScoreIsSum(firstRoll: Int, secondRoll: Int, firstScore: String, secondScore: String, frameScore: String) {
         var sut = ViewModel()
         
         sut.roll(firstRoll)
@@ -76,16 +76,16 @@ struct BowlingKata_iOSTests {
         sut.roll(1)
         sut.roll(1)
         
-        #expect(sut.frameScores == makeFrameScores(firstScore: 2))
+        #expect(sut.frameScores == makeFrameScores(firstScore: "2"))
         #expect(sut.rollScores == ["1", "1", "1"])
     }
     
     @Test(arguments: [
-        (0, 0, "0", "0", 2),
-        (1, 1, "1", "1", 4),
-        (0, 8, "0", "8", 10),
+        (0, 0, "0", "0", "2"),
+        (1, 1, "1", "1", "4"),
+        (0, 8, "0", "8", "10"),
     ])
-    func viewModel_rollSecondFrame_frameScoreIsCorrect(thirdRoll: Int, fourthRoll: Int, thirdRollScore: String, fourthRollScore: String, secondFrameScore: Int) {
+    func viewModel_rollSecondFrame_frameScoreIsCorrect(thirdRoll: Int, fourthRoll: Int, thirdRollScore: String, fourthRollScore: String, secondFrameScore: String) {
         var sut = ViewModel()
         
         sut.roll(1)
@@ -93,7 +93,7 @@ struct BowlingKata_iOSTests {
         sut.roll(thirdRoll)
         sut.roll(fourthRoll)
 
-        #expect(sut.frameScores == makeFrameScores(firstScore: 2, secondScore: secondFrameScore))
+        #expect(sut.frameScores == makeFrameScores(firstScore: "2", secondScore: secondFrameScore))
         #expect(sut.rollScores == ["1", "1", thirdRollScore, fourthRollScore])
     }
     
@@ -105,11 +105,11 @@ struct BowlingKata_iOSTests {
         sut.roll(1)
         sut.roll(0)
         
-        #expect(sut.frameScores == makeFrameScores(firstScore: 10))
+        #expect(sut.frameScores == makeFrameScores(firstScore: "10"))
         #expect(sut.rollScores == ["9", "/", "0"])
     }
 
-    func makeFrameScores(firstScore: Int? = nil, secondScore: Int? = nil) -> [Int?] {
-        [firstScore, secondScore, nil, nil, nil, nil, nil, nil, nil, nil]
+    func makeFrameScores(firstScore: String = "", secondScore: String = "") -> [String] {
+        [firstScore, secondScore, "", "", "", "", "", "", "", ""]
     }
 }
