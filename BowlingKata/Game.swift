@@ -8,18 +8,15 @@
 import Foundation
 
 public final class Game {
-    var frameScores: [Int?]
 
     private var rolls: [Int]
     private var rollIndex: Int
 
     private var frameIndex: Int
-    private var frameScoreIndex: Int
 
     public let frames: [Frame]
 
     public init() {
-        frameScores = Array(repeating: nil, count: 10)
         frames = (0..<10).map { _ in Frame() }
         for (i, frame) in frames.enumerated() {
             if i > 0 {
@@ -32,7 +29,6 @@ public final class Game {
         rolls = Array(repeating: 0, count: 21)
         rollIndex = 0
         frameIndex = 0
-        frameScoreIndex = 0
     }
 
     public class Frame {
@@ -118,49 +114,6 @@ public final class Game {
         } else {
             frames[frameIndex].roll3 = pins
         }
-
-        if rollIndex == 3 {
-            if isSpare(rollIndex - 3) {
-                frameScores[frameScoreIndex] = 10 + pins
-                frameScoreIndex += 1
-            }
-            if isStrike(rollIndex - 3) {
-                frameScores[frameScoreIndex] = 10 + strikeBonus(rollIndex - 3)
-                frameScoreIndex += 1
-                frameScores[frameScoreIndex] = score()
-                frameScoreIndex += 1
-            }
-        }
-
-        if rollIndex.isMultiple(of: 2) {
-            if !isSpare(rollIndex - 2), !isStrike(rollIndex - 2) {
-                frameScores[frameScoreIndex] = score()
-                frameScoreIndex += 1
-            }
-        }
-
-        if frameScoreIndex == 9 {
-            frameScores[frameScoreIndex] = score()
-        }
-    }
-
-    @discardableResult
-    public func score() -> Int {
-        var score = 0
-        var roll = 0
-        for _ in 1...10 {
-            if isStrike(roll) {
-                score += 10 + strikeBonus(roll)
-                roll += 1
-            } else if isSpare(roll) {
-                score += 10 + spareBonus(roll)
-                roll += 2
-            } else {
-                score += sumOfBallsInFrame(roll)
-                roll += 2
-            }
-        }
-        return score
     }
 
     private func isSpare(_ roll: Int) -> Bool {

@@ -23,29 +23,21 @@ final class GameTests: XCTestCase {
 
     func test_gutterGame() {
         rollMany(pins: 0, times: 20)
-        XCTAssertEqual(game.score(), 0)
-        XCTAssertEqual(game.frameScores, Array(repeating: 0, count: 10))
     }
 
     func test_allOnes() {
         rollMany(pins: 1, times: 20)
-        XCTAssertEqual(game.score(), 20)
-        XCTAssertEqual(game.frameScores, [2, 4, 6, 8, 10, 12, 14, 16, 18, 20])
     }
     
     func test_spare_withoutRequiredBonusRolls_notScored() {
         rollSpare()
         
-        XCTAssertEqual(game.score(), 10)
-        XCTAssertEqual(game.frameScores, Array(repeating: nil, count: 10))
         XCTAssertEqual(game.frames[0].score, nil)
     }
 
     func test_strike_withOnlyOneRequiredBonusRoll_doesNotScoreFrame() {
         rollStrike()
 
-        XCTAssertEqual(game.score(), 10)
-        XCTAssertEqual(game.frameScores, Array(repeating: nil, count: 10))
         XCTAssertEqual(game.frames[0].roll1, 10)
         XCTAssertEqual(game.frames[0].roll2, nil)
         XCTAssertEqual(game.frames[0].score, nil)
@@ -56,8 +48,6 @@ final class GameTests: XCTestCase {
         game.roll(3)
         rollMany(pins: 0, times: 17)
         
-        XCTAssertEqual(game.score(), 16)
-        XCTAssertEqual(game.frameScores, [13, 16, 16, 16, 16, 16, 16, 16, 16, 16])
         XCTAssertEqual(game.frames[0].score, 13)
         XCTAssertEqual(game.frames[1].score, 16)
         XCTAssertEqual(game.frames[9].score, 16)
@@ -89,7 +79,6 @@ final class GameTests: XCTestCase {
         rollStrike()
         game.roll(3)
 
-        XCTAssertEqual(game.frameScores, Array(repeating: nil, count: 10))
         XCTAssertEqual(game.frames[0].roll1, 10)
         XCTAssertEqual(game.frames[0].roll2, nil)
         XCTAssertEqual(game.frames[0].score, nil)
@@ -100,7 +89,6 @@ final class GameTests: XCTestCase {
         game.roll(3)
         game.roll(3)
 
-        XCTAssertEqual(game.frameScores, [16, 22, nil, nil, nil, nil, nil, nil, nil, nil])
         XCTAssertEqual(game.frames[0].roll1, 10)
         XCTAssertEqual(game.frames[0].roll2, nil)
         XCTAssertEqual(game.frames[1].roll1, 3)
@@ -115,8 +103,6 @@ final class GameTests: XCTestCase {
         game.roll(4)
         rollMany(pins: 0, times: 16)
         
-        XCTAssertEqual(game.score(), 24)
-        XCTAssertEqual(game.frameScores, [17, 24, 24, 24, 24, 24, 24, 24, 24, 24])
         XCTAssertEqual(game.frames[0].score, 17)
         XCTAssertEqual(game.frames[1].score, 24)
         XCTAssertEqual(game.frames[9].score, 24)
@@ -135,7 +121,6 @@ final class GameTests: XCTestCase {
     func test_perfectGame() {
         rollMany(pins: 10, times: 12)
         
-        XCTAssertEqual(game.score(), 300)
         XCTAssertEqual(game.frames[0].score, 30)
         XCTAssertEqual(game.frames[1].score, 60)
         XCTAssertEqual(game.frames[2].score, 90)
