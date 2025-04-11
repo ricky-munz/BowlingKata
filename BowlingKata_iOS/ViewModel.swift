@@ -24,17 +24,30 @@ struct ViewModel {
         rolls.append(roll)
         game.roll(roll)
         
-        let lastTwoRolls = rolls.suffix(2).reduce(0, +)
-
-        if roll == 10 {
-            rollScores.append("X")
-            rollScores.append("")
-        } else if rolls.count > 1, lastTwoRolls == 10 {
-            rollScores.append("/")
-        } else {
-            rollScores.append(String(roll))
+        rollScores = []
+        game.frames.forEach { frame in
+            if let roll1 = frame.roll1 {
+                switch roll1 {
+                    case 10:
+                    rollScores.append("X")
+                    rollScores.append("")
+                default:
+                    rollScores.append(String(roll1))
+                }
+            }
+            if let roll1 = frame.roll1, let roll2 = frame.roll2 {
+                if roll1 + roll2 == 10 {
+                    rollScores.append("/")
+                } else {
+                    rollScores.append(String(roll2))
+                }
+            }
+            if let roll3 = frame.roll3 {
+                rollScores.append(String(roll3))
+            }
         }
         
+        let lastTwoRolls = rolls.suffix(2).reduce(0, +)
         if rolls.count.isMultiple(of: 2), lastTwoRolls != 10 {
             frameScores[frameIndex] = game.frames[frameIndex].score
             frameIndex += 1
