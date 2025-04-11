@@ -115,24 +115,4 @@ public final class Game {
             frames[frameIndex].roll3 = pins
         }
     }
-
-    private func isSpare(_ roll: Int) -> Bool {
-        rolls[roll] + rolls[roll + 1] == 10
-    }
-
-    private func isStrike(_ roll: Int) -> Bool {
-        return rolls[roll] == 10
-    }
-
-    private func strikeBonus(_ roll: Int) -> Int {
-        rolls[roll + 1] + rolls[roll + 2]
-    }
-
-    private func spareBonus(_ roll: Int) -> Int {
-        rolls[roll + 2]
-    }
-
-    private func sumOfBallsInFrame(_ roll: Int) -> Int {
-        rolls[roll] + rolls[roll + 1]
-    }
 }
