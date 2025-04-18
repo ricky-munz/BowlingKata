@@ -26,10 +26,12 @@ class ViewModel {
         game.roll(roll)
         
         rollScores = []
-        for frame in game.frames {
+        for (index, frame) in game.frames.enumerated() {
             if frame.isStrike {
                 rollScores.append("X")
-                rollScores.append("")
+                if index != 9 {
+                    rollScores.append("")
+                }
                 continue
             }
             if let roll1 = frame.roll1 {

@@ -108,6 +108,27 @@ struct BowlingKata_iOSTests {
         #expect(sut.frameScores == makeFrameScores(firstScore: "10"))
         #expect(sut.rollScores == ["9", "/", "0"])
     }
+    
+    @Test
+    func viewModel_rollPerfectGame_rollScoresCountIs21() {
+        let sut = ViewModel()
+        
+        sut.roll(10)
+        sut.roll(10)
+        sut.roll(10)
+        sut.roll(10)
+        sut.roll(10)
+        sut.roll(10)
+        sut.roll(10)
+        sut.roll(10)
+        sut.roll(10)
+        sut.roll(10)
+        sut.roll(10)
+        sut.roll(10)
+        
+        #expect(sut.frameScores == ["30", "60", "90", "120", "150", "180", "210", "240", "270", "300"])
+        #expect(sut.rollScores == ["X", "", "X", "", "X", "", "X", "", "X", "", "X", "", "X", "", "X", "", "X", "", "X", "X", "X"])
+    }
 
     func makeFrameScores(firstScore: String = "", secondScore: String = "") -> [String] {
         [firstScore, secondScore, "", "", "", "", "", "", "", ""]
