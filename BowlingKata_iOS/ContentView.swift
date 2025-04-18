@@ -15,17 +15,30 @@ struct ContentView: View {
         VStack {
             Grid(horizontalSpacing: 0) {
                 GridRow {
-                    ForEach(viewModel.frameScores, id: \.self) { score in
+                    ForEach(Array(viewModel.frameScores.enumerated()), id: \.offset) { frameIndex, score in
                         ZStack {
                             Color(.clear)
                                 .border(.black)
 
                             VStack(spacing: 0) {
                                 HStack(spacing: 0) {
-                                    ForEach(0..<3) { _ in
+                                    let numRolls = frameIndex == 9 ? 3 : 2
+                                    if numRolls == 2 {
                                         Color(.clear)
-                                            .border(.black)
                                             .aspectRatio(contentMode: .fit)
+                                    }
+                                    ForEach(0..<numRolls, id: \.self) { rollIndex in
+                                        ZStack {
+                                            Color(.clear)
+                                                .border(.black)
+                                                .aspectRatio(contentMode: .fit)
+                                            
+                                            if viewModel.rollScores.count < frameIndex * 2 + rollIndex + 1 {
+                                                Text("")
+                                            } else {
+                                                Text(viewModel.rollScores[frameIndex * 2 + rollIndex])
+                                            }
+                                        }
                                     }
                                 }
                                 .frame(maxWidth: .infinity, alignment: .trailing)
