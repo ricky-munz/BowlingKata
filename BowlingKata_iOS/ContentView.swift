@@ -20,7 +20,7 @@ struct ContentView: View {
                             Color(.clear)
                                 .border(.black)
 
-                            VStack {
+                            VStack(spacing: 0) {
                                 HStack(spacing: 0) {
                                     ForEach(0..<3) { _ in
                                         Color(.clear)
@@ -31,16 +31,18 @@ struct ContentView: View {
                                 .frame(maxWidth: .infinity, alignment: .trailing)
 
                                 Text(score)
-                                    .frame(maxWidth: .infinity, alignment: .leading)
+                                    .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .bottomLeading)
                                     .padding(.leading)
+                                    .padding(.bottom)
                             }
                             .frame(maxHeight: .infinity, alignment: .top)
                         }
-                        .scaledToFill()
-                        .gridCellUnsizedAxes(.vertical)
+                        .aspectRatio(1, contentMode: .fill)
                     }
                 }
+                .frame(maxHeight: 100)
             }
+            .frame(maxWidth: .infinity)
             .padding()
 
             HStack {
