@@ -34,9 +34,15 @@ class ViewModel {
                 } else {
                     if frame.roll2 == 10 {
                         rollScores.append("X")
+                    } else if let roll2 = frame.roll2 {
+                        rollScores.append(String(roll2))
                     }
                     if frame.roll3 == 10 {
                         rollScores.append("X")
+                    } else if let roll2 = frame.roll2,
+                              let roll3 = frame.roll3,
+                              roll2 + roll3 == 10 {
+                        rollScores.append("/")
                     }
                 }
                 continue
