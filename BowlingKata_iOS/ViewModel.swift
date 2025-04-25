@@ -55,9 +55,15 @@ class ViewModel {
     }
 
     private func scoreFinal(frame: Game.Frame) {
-        if frame.isStrike {
-            rollScores.append("X")
+        if let roll1 = frame.roll1 {
+            if frame.roll1 == 10 {
+                rollScores.append("X")
+            } else {
+                rollScores.append(String(roll1))
+            }
+        }
 
+        if frame.isStrike {
             if frame.roll2 == 10 {
                 rollScores.append("X")
             } else if let roll2 = frame.roll2 {
@@ -73,9 +79,6 @@ class ViewModel {
                 rollScores.append(String(roll3))
             }
             return
-        }
-        if let roll1 = frame.roll1 {
-            rollScores.append(String(roll1))
         }
         if frame.isSpare {
             rollScores.append("/")
