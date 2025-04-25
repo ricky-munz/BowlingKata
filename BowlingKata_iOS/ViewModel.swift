@@ -27,11 +27,10 @@ class ViewModel {
         
         rollScores = []
         for (index, frame) in game.frames.enumerated() {
-            if frame.isStrike {
-                rollScores.append("X")
-                if index != 9 {
-                    rollScores.append("")
-                } else {
+            if index == 9 {
+                if frame.isStrike {
+                    rollScores.append("X")
+
                     if frame.roll2 == 10 {
                         rollScores.append("X")
                     } else if let roll2 = frame.roll2 {
@@ -46,15 +45,13 @@ class ViewModel {
                     } else if let roll3 = frame.roll3 {
                         rollScores.append(String(roll3))
                     }
+                    continue
                 }
-                continue
-            }
-            if let roll1 = frame.roll1 {
-                rollScores.append(String(roll1))
-            }
-            if frame.isSpare {
-                rollScores.append("/")
-                if index == 9 {
+                if let roll1 = frame.roll1 {
+                    rollScores.append(String(roll1))
+                }
+                if frame.isSpare {
+                    rollScores.append("/")
                     if let roll3 = frame.roll3 {
                         if roll3 == 10 {
                             rollScores.append("X")
@@ -62,14 +59,28 @@ class ViewModel {
                             rollScores.append(String(roll3))
                         }
                     }
+                    continue
                 }
+                if let roll2 = frame.roll2 {
+                    rollScores.append(String(roll2))
+                }
+                continue
+            }
+
+            if frame.isStrike {
+                rollScores.append("X")
+                rollScores.append("")
+                continue
+            }
+            if let roll1 = frame.roll1 {
+                rollScores.append(String(roll1))
+            }
+            if frame.isSpare {
+                rollScores.append("/")
                 continue
             }
             if let roll2 = frame.roll2 {
                 rollScores.append(String(roll2))
-            }
-            if let roll3 = frame.roll3 {
-                rollScores.append(String(roll3))
             }
         }
         
