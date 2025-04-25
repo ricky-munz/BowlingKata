@@ -63,37 +63,27 @@ class ViewModel {
             rollScores.append(String(roll1))
         }
 
-        if let roll2 = frame.roll2 {
-            if roll2 == 10 {
-                rollScores.append("X")
-            } else if roll1 + roll2 == 10 {
-                rollScores.append("/")
-            } else {
-                rollScores.append(String(roll2))
-            }
+        guard let roll2 = frame.roll2 else { return }
+
+        if roll2 == 10 {
+            rollScores.append("X")
+        } else if roll1 + roll2 == 10 {
+            rollScores.append("/")
+        } else {
+            rollScores.append(String(roll2))
         }
 
-        if frame.isStrike {
-            if frame.roll3 == 10 {
-                rollScores.append("X")
-            } else if let roll2 = frame.roll2,
-                      let roll3 = frame.roll3,
-                      roll2 + roll3 == 10 {
-                rollScores.append("/")
-            } else if let roll3 = frame.roll3 {
-                rollScores.append(String(roll3))
-            }
+        guard let roll3 = frame.roll3 else {
+            rollScores.append("")
             return
         }
-        if frame.isSpare {
-            if let roll3 = frame.roll3 {
-                if roll3 == 10 {
-                    rollScores.append("X")
-                } else {
-                    rollScores.append(String(roll3))
-                }
-            }
-            return
+
+        if roll3 == 10 {
+            rollScores.append("X")
+        } else if roll2 + roll3 == 10 {
+            rollScores.append("/")
+        } else {
+            rollScores.append(String(roll3))
         }
     }
 }
