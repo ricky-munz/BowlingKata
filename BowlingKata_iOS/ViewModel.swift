@@ -28,42 +28,7 @@ class ViewModel {
         rollScores = []
         for (index, frame) in game.frames.enumerated() {
             if index == 9 {
-                if frame.isStrike {
-                    rollScores.append("X")
-
-                    if frame.roll2 == 10 {
-                        rollScores.append("X")
-                    } else if let roll2 = frame.roll2 {
-                        rollScores.append(String(roll2))
-                    }
-                    if frame.roll3 == 10 {
-                        rollScores.append("X")
-                    } else if let roll2 = frame.roll2,
-                              let roll3 = frame.roll3,
-                              roll2 + roll3 == 10 {
-                        rollScores.append("/")
-                    } else if let roll3 = frame.roll3 {
-                        rollScores.append(String(roll3))
-                    }
-                    continue
-                }
-                if let roll1 = frame.roll1 {
-                    rollScores.append(String(roll1))
-                }
-                if frame.isSpare {
-                    rollScores.append("/")
-                    if let roll3 = frame.roll3 {
-                        if roll3 == 10 {
-                            rollScores.append("X")
-                        } else {
-                            rollScores.append(String(roll3))
-                        }
-                    }
-                    continue
-                }
-                if let roll2 = frame.roll2 {
-                    rollScores.append(String(roll2))
-                }
+                scoreFinal(frame: frame)
                 continue
             }
 
@@ -86,6 +51,45 @@ class ViewModel {
         
         frameScores = game.frames.map { frame in
             frame.score.map(String.init) ?? ""
+        }
+    }
+
+    private func scoreFinal(frame: Game.Frame) {
+        if frame.isStrike {
+            rollScores.append("X")
+
+            if frame.roll2 == 10 {
+                rollScores.append("X")
+            } else if let roll2 = frame.roll2 {
+                rollScores.append(String(roll2))
+            }
+            if frame.roll3 == 10 {
+                rollScores.append("X")
+            } else if let roll2 = frame.roll2,
+                      let roll3 = frame.roll3,
+                      roll2 + roll3 == 10 {
+                rollScores.append("/")
+            } else if let roll3 = frame.roll3 {
+                rollScores.append(String(roll3))
+            }
+            return
+        }
+        if let roll1 = frame.roll1 {
+            rollScores.append(String(roll1))
+        }
+        if frame.isSpare {
+            rollScores.append("/")
+            if let roll3 = frame.roll3 {
+                if roll3 == 10 {
+                    rollScores.append("X")
+                } else {
+                    rollScores.append(String(roll3))
+                }
+            }
+            return
+        }
+        if let roll2 = frame.roll2 {
+            rollScores.append(String(roll2))
         }
     }
 }
