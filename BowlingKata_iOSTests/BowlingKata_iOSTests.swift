@@ -110,7 +110,7 @@ struct BowlingKata_iOSTests {
     }
     
     @Test
-    func viewModel_rollPerfectGame_rollScoresCountIs21() {
+    func viewModel_rollPerfectGame_rollScoresDisplays3XsInFinalFrame() {
         let sut = ViewModel()
         
         sut.roll(10)
@@ -131,7 +131,7 @@ struct BowlingKata_iOSTests {
     }
     
     @Test
-    func viewModel_rollSpareAtEnd_rollScoresCountIs21() {
+    func viewModel_rollSpareAtEnd_rollScoresDisplaysXAndSlashInFinalFrame() {
         let sut = ViewModel()
         
         sut.roll(10)
