@@ -55,12 +55,12 @@ class ViewModel {
     }
 
     private func scoreFinal(frame: Game.Frame) {
-        if let roll1 = frame.roll1 {
-            if frame.roll1 == 10 {
-                rollScores.append("X")
-            } else {
-                rollScores.append(String(roll1))
-            }
+        guard let roll1 = frame.roll1 else { return }
+
+        if roll1 == 10 {
+            rollScores.append("X")
+        } else {
+            rollScores.append(String(roll1))
         }
 
         if frame.isStrike {
