@@ -54,6 +54,11 @@ class ViewModel {
             }
             if frame.isSpare {
                 rollScores.append("/")
+                if index == 9 {
+                    if let roll3 = frame.roll3 {
+                        rollScores.append(String(roll3))
+                    }
+                }
                 continue
             }
             if let roll2 = frame.roll2 {

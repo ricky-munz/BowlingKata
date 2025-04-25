@@ -171,6 +171,27 @@ struct BowlingKata_iOSTests {
         #expect(sut.frameScores == ["30", "60", "90", "120", "150", "180", "210", "240", "263", "279"])
         #expect(sut.rollScores == ["X", "", "X", "", "X", "", "X", "", "X", "", "X", "", "X", "", "X", "", "X", "", "X", "3", "3"])
     }
+    
+    @Test
+    func viewModel_rollSpareAndNormalAtEnd_rollScoresDisplaysSlashAndNumbersInFinalFrame() {
+        let sut = ViewModel()
+        
+        sut.roll(10)
+        sut.roll(10)
+        sut.roll(10)
+        sut.roll(10)
+        sut.roll(10)
+        sut.roll(10)
+        sut.roll(10)
+        sut.roll(10)
+        sut.roll(10)
+        sut.roll(8)
+        sut.roll(2)
+        sut.roll(3)
+        
+        #expect(sut.frameScores == ["30", "60", "90", "120", "150", "180", "210", "238", "258", "271"])
+        #expect(sut.rollScores == ["X", "", "X", "", "X", "", "X", "", "X", "", "X", "", "X", "", "X", "", "X", "", "8", "/", "3"])
+    }
 
     func makeFrameScores(firstScore: String = "", secondScore: String = "") -> [String] {
         [firstScore, secondScore, "", "", "", "", "", "", "", ""]
