@@ -63,12 +63,17 @@ class ViewModel {
             rollScores.append(String(roll1))
         }
 
-        if frame.isStrike {
-            if frame.roll2 == 10 {
+        if let roll2 = frame.roll2 {
+            if roll2 == 10 {
                 rollScores.append("X")
-            } else if let roll2 = frame.roll2 {
+            } else if roll1 + roll2 == 10 {
+                rollScores.append("/")
+            } else {
                 rollScores.append(String(roll2))
             }
+        }
+
+        if frame.isStrike {
             if frame.roll3 == 10 {
                 rollScores.append("X")
             } else if let roll2 = frame.roll2,
@@ -81,7 +86,6 @@ class ViewModel {
             return
         }
         if frame.isSpare {
-            rollScores.append("/")
             if let roll3 = frame.roll3 {
                 if roll3 == 10 {
                     rollScores.append("X")
@@ -90,9 +94,6 @@ class ViewModel {
                 }
             }
             return
-        }
-        if let roll2 = frame.roll2 {
-            rollScores.append(String(roll2))
         }
     }
 }
