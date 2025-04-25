@@ -43,6 +43,8 @@ class ViewModel {
                               let roll3 = frame.roll3,
                               roll2 + roll3 == 10 {
                         rollScores.append("/")
+                    } else if let roll3 = frame.roll3 {
+                        rollScores.append(String(roll3))
                     }
                 }
                 continue
