@@ -110,7 +110,7 @@ struct BowlingKata_iOSTests {
     }
     
     @Test
-    func viewModel_rollPerfectGame_rollScoresDisplays3XsInFinalFrame() {
+    func viewModel_onFinalFrame_withPerfectGame_shouldDisplay3Xs() {
         let sut = ViewModel()
         
         sut.roll(10)
@@ -131,7 +131,7 @@ struct BowlingKata_iOSTests {
     }
     
     @Test
-    func viewModel_rollSpareAtEnd_rollScoresDisplaysXAndSlashInFinalFrame() {
+    func viewModel_onFinalFrame_withSpare_shouldDisplayXAndSlash() {
         let sut = ViewModel()
         
         sut.roll(10)
@@ -152,7 +152,7 @@ struct BowlingKata_iOSTests {
     }
     
     @Test
-    func viewModel_rollStrikeAndNormalAtEnd_rollScoresDisplaysXAndNumbersInFinalFrame() {
+    func viewModel_onFinalFrame_withStrikeAndNormal_shouldDisplayXAndNumbers() {
         let sut = ViewModel()
         
         sut.roll(10)
@@ -173,7 +173,7 @@ struct BowlingKata_iOSTests {
     }
     
     @Test
-    func viewModel_rollSpareAndNormalAtEnd_rollScoresDisplaysSlashAndNumbersInFinalFrame() {
+    func viewModel_onFinalFrame_withSpareAndNormal_shouldDisplaySlashAndNumbers() {
         let sut = ViewModel()
         
         sut.roll(10)
@@ -194,7 +194,7 @@ struct BowlingKata_iOSTests {
     }
     
     @Test
-    func viewModel_rollSpareAndStrikeAtEnd_rollScoresDisplaysSlashAndXInFinalFrame() {
+    func viewModel_onFinalFrame_withSpareAndStrikeAtEnd_shouldDisplaySlashAndX() {
         let sut = ViewModel()
         
         sut.roll(10)
