@@ -14,6 +14,7 @@
 		9CEAC9F42CF0C7F1002FC2D4 /* Game.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CEAC9F32CF0C7F1002FC2D4 /* Game.swift */; };
 		9CEAC9F62CF0C81A002FC2D4 /* GameTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CEAC9F52CF0C81A002FC2D4 /* GameTests.swift */; };
 		9CEAC9F72CF0C839002FC2D4 /* Game.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CEAC9F32CF0C7F1002FC2D4 /* Game.swift */; };
+		ABBA7FED2D9B6EBD0078B6B5 /* DataStructures in Frameworks */ = {isa = PBXBuildFile; productRef = ABBA7FEC2D9B6EBD0078B6B5 /* DataStructures */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -90,6 +91,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				ABBA7FED2D9B6EBD0078B6B5 /* DataStructures in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -284,6 +286,9 @@
 				Base,
 			);
 			mainGroup = 9CEAC9D12CF0C2B6002FC2D4;
+			packageReferences = (
+				ABBA7FEB2D9B6EBD0078B6B5 /* XCRemoteSwiftPackageReference "DataStructures" */,
+			);
 			productRefGroup = 9CEAC9DC2CF0C2B6002FC2D4 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -758,6 +763,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		ABBA7FEB2D9B6EBD0078B6B5 /* XCRemoteSwiftPackageReference "DataStructures" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/jirving887/DataStructures.git";
+			requirement = {
+				branch = main;
+				kind = branch;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		ABBA7FEC2D9B6EBD0078B6B5 /* DataStructures */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = ABBA7FEB2D9B6EBD0078B6B5 /* XCRemoteSwiftPackageReference "DataStructures" */;
+			productName = DataStructures;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 9CEAC9D22CF0C2B6002FC2D4 /* Project object */;
 }
