@@ -10,15 +10,15 @@ import Testing
 
 struct BowlingKata_iOSTests {
     let sut: ViewModel
-
+    
     init() {
         sut = ViewModel()
     }
-
+    
     @Test func viewModel_onInit_hasTenFrames() {
         #expect(sut.frameScores.count == 10)
     }
-
+    
     @Test(arguments: [
         (0, "0"),
         (1, "1"),
@@ -26,11 +26,11 @@ struct BowlingKata_iOSTests {
     ])
     func viewModel_rollOnce_rollScoreMatchesInput(roll: Int, score: String) {
         sut.roll(roll)
-
+        
         #expect(sut.frameScores == makeFrameScores())
         #expect(sut.rollScores == [score])
     }
-
+    
     @Test(arguments: [
         (0, 0, "0", "0", "0"),
         (0, 1, "0", "1", "1"),
@@ -41,7 +41,7 @@ struct BowlingKata_iOSTests {
     func viewModel_rollTwice_frameScoreIsSum(firstRoll: Int, secondRoll: Int, firstScore: String, secondScore: String, frameScore: String) {
         sut.roll(firstRoll)
         sut.roll(secondRoll)
-
+        
         #expect(sut.frameScores == makeFrameScores(firstScore: frameScore))
         #expect(sut.rollScores == [firstScore, secondScore])
     }
@@ -83,7 +83,7 @@ struct BowlingKata_iOSTests {
         sut.roll(1)
         sut.roll(thirdRoll)
         sut.roll(fourthRoll)
-
+        
         #expect(sut.frameScores == makeFrameScores(firstScore: "2", secondScore: secondFrameScore))
         #expect(sut.rollScores == ["1", "1", thirdRollScore, fourthRollScore])
     }
@@ -98,59 +98,21 @@ struct BowlingKata_iOSTests {
         #expect(sut.rollScores == ["9", "/", "0"])
     }
     
-    @Test
-    func viewModel_onFinalFrame_withPerfectGame_shouldDisplay3Xs() {
+    @Test(arguments: [
+        (rolls: [10, 10, 10], expectedScores: ["X", "X", "X"]),
+        (rolls: [10, 5, 5], expectedScores: ["X", "5", "/"]),
+        (rolls: [10, 3, 3], expectedScores: ["X", "3", "3"]),
+        (rolls: [8, 2, 3], expectedScores: ["8", "/", "3"]),
+        (rolls: [8, 2, 10], expectedScores: ["8", "/", "X"])
+    ])
+    func viewModel_onFinalFrame_displaysRollsCorrectly(rolls: [Int], expectedScores: [String]) {
         rollStrikesForNineFrames()
 
-        sut.roll(10)
-        sut.roll(10)
-        sut.roll(10)
-        
-        #expect(sut.rollScores.suffix(3) == ["X", "X", "X"])
-    }
-    
-    @Test
-    func viewModel_onFinalFrame_withSpare_shouldDisplayXAndSlash() {
-        rollStrikesForNineFrames()
+        for roll in rolls {
+            sut.roll(roll)
+        }
 
-        sut.roll(10)
-        sut.roll(5)
-        sut.roll(5)
-
-        #expect(sut.rollScores.suffix(3) == ["X", "5", "/"])
-    }
-    
-    @Test
-    func viewModel_onFinalFrame_withStrikeAndNormal_shouldDisplayXAndNumbers() {
-        rollStrikesForNineFrames()
-
-        sut.roll(10)
-        sut.roll(3)
-        sut.roll(3)
-
-        #expect(sut.rollScores.suffix(3) == ["X", "3", "3"])
-    }
-    
-    @Test
-    func viewModel_onFinalFrame_withSpareAndNormal_shouldDisplaySlashAndNumbers() {
-        rollStrikesForNineFrames()
-
-        sut.roll(8)
-        sut.roll(2)
-        sut.roll(3)
-
-        #expect(sut.rollScores.suffix(3) == ["8", "/", "3"])
-    }
-    
-    @Test
-    func viewModel_onFinalFrame_withSpareAndStrikeAtEnd_shouldDisplaySlashAndX() {
-        rollStrikesForNineFrames()
-
-        sut.roll(8)
-        sut.roll(2)
-        sut.roll(10)
-        
-        #expect(sut.rollScores.suffix(3) == ["8", "/", "X"])
+        #expect(sut.rollScores.suffix(3) == expectedScores)
     }
 
     func makeFrameScores(firstScore: String = "", secondScore: String = "") -> [String] {
