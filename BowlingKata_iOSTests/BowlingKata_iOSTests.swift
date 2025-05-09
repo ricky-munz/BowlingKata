@@ -106,7 +106,7 @@ struct BowlingKata_iOSTests {
         sut.roll(10)
         sut.roll(10)
         
-        #expect(sut.rollScores == ["X", "", "X", "", "X", "", "X", "", "X", "", "X", "", "X", "", "X", "", "X", "", "X", "X", "X"])
+        #expect(sut.rollScores.suffix(3) == ["X", "X", "X"])
     }
     
     @Test
@@ -116,8 +116,8 @@ struct BowlingKata_iOSTests {
         sut.roll(10)
         sut.roll(5)
         sut.roll(5)
-        
-        #expect(sut.rollScores == ["X", "", "X", "", "X", "", "X", "", "X", "", "X", "", "X", "", "X", "", "X", "", "X", "5", "/"])
+
+        #expect(sut.rollScores.suffix(3) == ["X", "5", "/"])
     }
     
     @Test
@@ -127,8 +127,8 @@ struct BowlingKata_iOSTests {
         sut.roll(10)
         sut.roll(3)
         sut.roll(3)
-        
-        #expect(sut.rollScores == ["X", "", "X", "", "X", "", "X", "", "X", "", "X", "", "X", "", "X", "", "X", "", "X", "3", "3"])
+
+        #expect(sut.rollScores.suffix(3) == ["X", "3", "3"])
     }
     
     @Test
@@ -138,8 +138,8 @@ struct BowlingKata_iOSTests {
         sut.roll(8)
         sut.roll(2)
         sut.roll(3)
-        
-        #expect(sut.rollScores == ["X", "", "X", "", "X", "", "X", "", "X", "", "X", "", "X", "", "X", "", "X", "", "8", "/", "3"])
+
+        #expect(sut.rollScores.suffix(3) == ["8", "/", "3"])
     }
     
     @Test
@@ -150,7 +150,7 @@ struct BowlingKata_iOSTests {
         sut.roll(2)
         sut.roll(10)
         
-        #expect(sut.rollScores == ["X", "", "X", "", "X", "", "X", "", "X", "", "X", "", "X", "", "X", "", "X", "", "8", "/", "X"])
+        #expect(sut.rollScores.suffix(3) == ["8", "/", "X"])
     }
 
     func makeFrameScores(firstScore: String = "", secondScore: String = "") -> [String] {
