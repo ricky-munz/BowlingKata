@@ -100,15 +100,8 @@ struct BowlingKata_iOSTests {
     
     @Test
     func viewModel_onFinalFrame_withPerfectGame_shouldDisplay3Xs() {
-        sut.roll(10)
-        sut.roll(10)
-        sut.roll(10)
-        sut.roll(10)
-        sut.roll(10)
-        sut.roll(10)
-        sut.roll(10)
-        sut.roll(10)
-        sut.roll(10)
+        rollStrikesForNineFrames()
+
         sut.roll(10)
         sut.roll(10)
         sut.roll(10)
@@ -119,15 +112,8 @@ struct BowlingKata_iOSTests {
     
     @Test
     func viewModel_onFinalFrame_withSpare_shouldDisplayXAndSlash() {
-        sut.roll(10)
-        sut.roll(10)
-        sut.roll(10)
-        sut.roll(10)
-        sut.roll(10)
-        sut.roll(10)
-        sut.roll(10)
-        sut.roll(10)
-        sut.roll(10)
+        rollStrikesForNineFrames()
+
         sut.roll(10)
         sut.roll(5)
         sut.roll(5)
@@ -138,15 +124,8 @@ struct BowlingKata_iOSTests {
     
     @Test
     func viewModel_onFinalFrame_withStrikeAndNormal_shouldDisplayXAndNumbers() {
-        sut.roll(10)
-        sut.roll(10)
-        sut.roll(10)
-        sut.roll(10)
-        sut.roll(10)
-        sut.roll(10)
-        sut.roll(10)
-        sut.roll(10)
-        sut.roll(10)
+        rollStrikesForNineFrames()
+
         sut.roll(10)
         sut.roll(3)
         sut.roll(3)
@@ -157,15 +136,8 @@ struct BowlingKata_iOSTests {
     
     @Test
     func viewModel_onFinalFrame_withSpareAndNormal_shouldDisplaySlashAndNumbers() {
-        sut.roll(10)
-        sut.roll(10)
-        sut.roll(10)
-        sut.roll(10)
-        sut.roll(10)
-        sut.roll(10)
-        sut.roll(10)
-        sut.roll(10)
-        sut.roll(10)
+        rollStrikesForNineFrames()
+
         sut.roll(8)
         sut.roll(2)
         sut.roll(3)
@@ -176,15 +148,8 @@ struct BowlingKata_iOSTests {
     
     @Test
     func viewModel_onFinalFrame_withSpareAndStrikeAtEnd_shouldDisplaySlashAndX() {
-        sut.roll(10)
-        sut.roll(10)
-        sut.roll(10)
-        sut.roll(10)
-        sut.roll(10)
-        sut.roll(10)
-        sut.roll(10)
-        sut.roll(10)
-        sut.roll(10)
+        rollStrikesForNineFrames()
+
         sut.roll(8)
         sut.roll(2)
         sut.roll(10)
@@ -195,5 +160,11 @@ struct BowlingKata_iOSTests {
 
     func makeFrameScores(firstScore: String = "", secondScore: String = "") -> [String] {
         [firstScore, secondScore, "", "", "", "", "", "", "", ""]
+    }
+
+    func rollStrikesForNineFrames() {
+        for _ in 0..<9 {
+            sut.roll(10)
+        }
     }
 }
