@@ -96,20 +96,32 @@ public final class Game {
 
     public func roll(_ pins: Int) {
         if currentFrame.roll1 == nil {
-            currentFrame.roll1 = pins
-
-            if currentFrame.isStrike, !isFinalFrame {
-                currentFrame.nextFrame = nextFrame
-                frameIndex += 1
-            }
+            roll1(pins)
         } else if currentFrame.roll2 == nil {
-            currentFrame.roll2 = pins
-
-            if !isFinalFrame {
-                frameIndex += 1
-            }
+            roll2(pins)
         } else {
-            currentFrame.roll3 = pins
+            roll3(pins)
         }
+    }
+
+    private func roll1(_ pins: Int) {
+        currentFrame.roll1 = pins
+
+        if currentFrame.isStrike, !isFinalFrame {
+            currentFrame.nextFrame = nextFrame
+            frameIndex += 1
+        }
+    }
+
+    private func roll2(_ pins: Int) {
+        currentFrame.roll2 = pins
+
+        if !isFinalFrame {
+            frameIndex += 1
+        }
+    }
+
+    private func roll3(_ pins: Int) {
+        currentFrame.roll3 = pins
     }
 }
