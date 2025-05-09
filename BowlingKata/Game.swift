@@ -97,7 +97,7 @@ public final class Game {
 
         if frame.roll1 == nil {
             frame.roll1 = pins
-            if pins == 10, !isFinalFrame {
+            if frame.isStrike, !isFinalFrame {
                 frame.nextFrame = frames[frameIndex + 1]
                 frameIndex += 1
             }
