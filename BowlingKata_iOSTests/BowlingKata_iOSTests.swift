@@ -9,10 +9,13 @@ import Testing
 @testable import BowlingKata_iOS
 
 struct BowlingKata_iOSTests {
-    
+    let sut: ViewModel
+
+    init() {
+        sut = ViewModel()
+    }
+
     @Test func viewModel_onInit_hasTenFrames() {
-        let sut = ViewModel()
-        
         #expect(sut.frameScores.count == 10)
     }
 
@@ -22,8 +25,6 @@ struct BowlingKata_iOSTests {
         (9, "9")
     ])
     func viewModel_rollOnce_rollScoreMatchesInput(roll: Int, score: String) {
-        let sut = ViewModel()
-
         sut.roll(roll)
 
         #expect(sut.frameScores == makeFrameScores())
@@ -38,8 +39,6 @@ struct BowlingKata_iOSTests {
         (8, 1, "8", "1", "9"),
     ])
     func viewModel_rollTwice_frameScoreIsSum(firstRoll: Int, secondRoll: Int, firstScore: String, secondScore: String, frameScore: String) {
-        let sut = ViewModel()
-        
         sut.roll(firstRoll)
         sut.roll(secondRoll)
 
@@ -49,8 +48,6 @@ struct BowlingKata_iOSTests {
     
     @Test
     func viewModel_rollSpare_frameScoreIsNil() {
-        let sut = ViewModel()
-        
         sut.roll(9)
         sut.roll(1)
         
@@ -60,8 +57,6 @@ struct BowlingKata_iOSTests {
     
     @Test
     func viewModel_rollStrike_frameScoreIsNil() {
-        let sut = ViewModel()
-        
         sut.roll(10)
         
         #expect(sut.frameScores == makeFrameScores())
@@ -70,8 +65,6 @@ struct BowlingKata_iOSTests {
     
     @Test
     func viewModel_rollThreeTimes_frameScoreIsCorrect() {
-        let sut = ViewModel()
-        
         sut.roll(1)
         sut.roll(1)
         sut.roll(1)
@@ -86,8 +79,6 @@ struct BowlingKata_iOSTests {
         (0, 8, "0", "8", "10"),
     ])
     func viewModel_rollSecondFrame_frameScoreIsCorrect(thirdRoll: Int, fourthRoll: Int, thirdRollScore: String, fourthRollScore: String, secondFrameScore: String) {
-        let sut = ViewModel()
-        
         sut.roll(1)
         sut.roll(1)
         sut.roll(thirdRoll)
@@ -99,8 +90,6 @@ struct BowlingKata_iOSTests {
     
     @Test
     func viewModel_rollSpareFirstFrame_frameScoreAddsZeroBonus() {
-        let sut = ViewModel()
-        
         sut.roll(9)
         sut.roll(1)
         sut.roll(0)
@@ -111,8 +100,6 @@ struct BowlingKata_iOSTests {
     
     @Test
     func viewModel_onFinalFrame_withPerfectGame_shouldDisplay3Xs() {
-        let sut = ViewModel()
-        
         sut.roll(10)
         sut.roll(10)
         sut.roll(10)
@@ -132,8 +119,6 @@ struct BowlingKata_iOSTests {
     
     @Test
     func viewModel_onFinalFrame_withSpare_shouldDisplayXAndSlash() {
-        let sut = ViewModel()
-        
         sut.roll(10)
         sut.roll(10)
         sut.roll(10)
@@ -153,8 +138,6 @@ struct BowlingKata_iOSTests {
     
     @Test
     func viewModel_onFinalFrame_withStrikeAndNormal_shouldDisplayXAndNumbers() {
-        let sut = ViewModel()
-        
         sut.roll(10)
         sut.roll(10)
         sut.roll(10)
@@ -174,8 +157,6 @@ struct BowlingKata_iOSTests {
     
     @Test
     func viewModel_onFinalFrame_withSpareAndNormal_shouldDisplaySlashAndNumbers() {
-        let sut = ViewModel()
-        
         sut.roll(10)
         sut.roll(10)
         sut.roll(10)
@@ -195,8 +176,6 @@ struct BowlingKata_iOSTests {
     
     @Test
     func viewModel_onFinalFrame_withSpareAndStrikeAtEnd_shouldDisplaySlashAndX() {
-        let sut = ViewModel()
-        
         sut.roll(10)
         sut.roll(10)
         sut.roll(10)
