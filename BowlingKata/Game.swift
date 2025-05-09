@@ -92,19 +92,21 @@ public final class Game {
     }
 
     public func roll(_ pins: Int) {
-        if frames[frameIndex].roll1 == nil {
-            frames[frameIndex].roll1 = pins
+        let frame = frames[frameIndex]
+        
+        if frame.roll1 == nil {
+            frame.roll1 = pins
             if pins == 10, frameIndex < 9 {
+                frame.nextFrame = frames[frameIndex + 1]
                 frameIndex += 1
-                frames[frameIndex - 1].nextFrame = frames[frameIndex]
             }
-        } else if frames[frameIndex].roll2 == nil {
-            frames[frameIndex].roll2 = pins
+        } else if frame.roll2 == nil {
+            frame.roll2 = pins
             if frameIndex < 9 {
                 frameIndex += 1
             }
         } else {
-            frames[frameIndex].roll3 = pins
+            frame.roll3 = pins
         }
     }
 }
