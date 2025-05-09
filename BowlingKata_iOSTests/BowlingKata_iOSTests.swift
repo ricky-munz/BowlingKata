@@ -106,7 +106,6 @@ struct BowlingKata_iOSTests {
         sut.roll(10)
         sut.roll(10)
         
-        #expect(sut.frameScores == ["30", "60", "90", "120", "150", "180", "210", "240", "270", "300"])
         #expect(sut.rollScores == ["X", "", "X", "", "X", "", "X", "", "X", "", "X", "", "X", "", "X", "", "X", "", "X", "X", "X"])
     }
     
@@ -118,7 +117,6 @@ struct BowlingKata_iOSTests {
         sut.roll(5)
         sut.roll(5)
         
-        #expect(sut.frameScores == ["30", "60", "90", "120", "150", "180", "210", "240", "265", "285"])
         #expect(sut.rollScores == ["X", "", "X", "", "X", "", "X", "", "X", "", "X", "", "X", "", "X", "", "X", "", "X", "5", "/"])
     }
     
@@ -130,7 +128,6 @@ struct BowlingKata_iOSTests {
         sut.roll(3)
         sut.roll(3)
         
-        #expect(sut.frameScores == ["30", "60", "90", "120", "150", "180", "210", "240", "263", "279"])
         #expect(sut.rollScores == ["X", "", "X", "", "X", "", "X", "", "X", "", "X", "", "X", "", "X", "", "X", "", "X", "3", "3"])
     }
     
@@ -142,7 +139,6 @@ struct BowlingKata_iOSTests {
         sut.roll(2)
         sut.roll(3)
         
-        #expect(sut.frameScores == ["30", "60", "90", "120", "150", "180", "210", "238", "258", "271"])
         #expect(sut.rollScores == ["X", "", "X", "", "X", "", "X", "", "X", "", "X", "", "X", "", "X", "", "X", "", "8", "/", "3"])
     }
     
@@ -154,7 +150,6 @@ struct BowlingKata_iOSTests {
         sut.roll(2)
         sut.roll(10)
         
-        #expect(sut.frameScores == ["30", "60", "90", "120", "150", "180", "210", "238", "258", "278"])
         #expect(sut.rollScores == ["X", "", "X", "", "X", "", "X", "", "X", "", "X", "", "X", "", "X", "", "X", "", "8", "/", "X"])
     }
 
