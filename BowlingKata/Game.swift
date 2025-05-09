@@ -10,6 +10,7 @@ import Foundation
 public final class Game {
 
     private var frameIndex: Int
+    private var isFinalFrame: Bool { frameIndex == 9 }
 
     public let frames: [Frame]
 
@@ -93,16 +94,16 @@ public final class Game {
 
     public func roll(_ pins: Int) {
         let frame = frames[frameIndex]
-        
+
         if frame.roll1 == nil {
             frame.roll1 = pins
-            if pins == 10, frameIndex < 9 {
+            if pins == 10, !isFinalFrame {
                 frame.nextFrame = frames[frameIndex + 1]
                 frameIndex += 1
             }
         } else if frame.roll2 == nil {
             frame.roll2 = pins
-            if frameIndex < 9 {
+            if !isFinalFrame {
                 frameIndex += 1
             }
         } else {
