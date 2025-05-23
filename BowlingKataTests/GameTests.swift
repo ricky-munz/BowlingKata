@@ -222,6 +222,23 @@ final class GameTests: XCTestCase {
         XCTAssertEqual(completionCount, 1)
     }
 
+    func test_rollGameWithLastFrameSpares_gameIsFinished() {
+        var completionCount = 0
+        game = Game {
+            completionCount += 1
+        }
+
+        rollMany(pins: 10, times: 9)
+
+        rollSpare()
+
+        XCTAssertEqual(completionCount, 0)
+
+        game.roll(1)
+
+        XCTAssertEqual(completionCount, 1)
+    }
+
     // MARK: - Helpers
     private func rollMany(pins: Int, times: Int) {
         for _ in 1...times {

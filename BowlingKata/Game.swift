@@ -123,7 +123,7 @@ public final class Game {
 
         if !isFinalFrame {
             frameIndex += 1
-        } else if !currentFrame.isStrike {
+        } else if !currentFrame.isStrike, !currentFrame.isSpare {
             completion()
         }
     }
