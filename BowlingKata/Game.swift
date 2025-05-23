@@ -9,13 +9,13 @@ import Foundation
 
 public final class Game {
 
-    private let completion: () -> Void
     private var frameIndex: Int
     private var isFinalFrame: Bool { frameIndex == 9 }
     private var currentFrame: Frame { frames[frameIndex] }
     private var nextFrame: Frame { isFinalFrame ? frames[frameIndex] : frames[frameIndex + 1] }
 
     public let frames: [Frame]
+    public var completion: () -> Void
 
     public init(completion: @escaping () -> Void = {}) {
         self.completion = completion

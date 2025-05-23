@@ -12,13 +12,18 @@ import BowlingKata
 class ViewModel {
     var frameScores: [String]
     var rollScores: [String] = []
+    var isGameCompleted: Bool = false
+
     private let game = Game()
-    
     private var frameIndex = 0
     
     init() {
         frameScores = game.frames.map { frame in
             frame.score.map(String.init) ?? ""
+        }
+
+        game.completion = {
+            self.isGameCompleted = true
         }
     }
     
