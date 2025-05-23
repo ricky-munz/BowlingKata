@@ -196,6 +196,39 @@ final class GameTests: XCTestCase {
         XCTAssertEqual(game.frames[1].score, 10)
     }
 
+    func test_rollGameOfAllOnes_exceptLastRoll_gameIsNotFinished() {
+        var completionCount = 0
+        game = Game {
+            completionCount += 1
+        }
+
+        rollMany(pins: 1, times: 19)
+
+        XCTAssertEqual(completionCount, 0)
+    }
+
+    func test_rollGameOfAllStrikes_exceptLastRoll_gameIsNotFinished() {
+        var completionCount = 0
+        game = Game {
+            completionCount += 1
+        }
+
+        rollMany(pins: 10, times: 11)
+
+        XCTAssertEqual(completionCount, 0)
+    }
+
+    func test_rollGameOfAllSpares_exceptLastRoll_gameIsNotFinished() {
+        var completionCount = 0
+        game = Game {
+            completionCount += 1
+        }
+
+        rollMany(pins: 5, times: 20)
+
+        XCTAssertEqual(completionCount, 0)
+    }
+
     func test_rollGameOfAllOnes_gameIsFinished() {
         var completionCount = 0
         game = Game {
