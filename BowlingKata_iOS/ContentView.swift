@@ -75,6 +75,7 @@ struct ContentView: View {
             } label: {
                 Text("Roll")
             }
+            .disabled(viewModel.isGameCompleted)
         }
     }
 }
