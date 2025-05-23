@@ -10,14 +10,19 @@ import XCTest
 
 final class GameTests: XCTestCase {
     private var game: Game!
+    private var completionCount = 0
 
     override func setUp() {
         super.setUp()
-        game = Game()
+
+        game = Game {
+            self.completionCount += 1
+        }
     }
 
     override func tearDown() {
         game = nil
+        completionCount = 0
         super.tearDown()
     }
 
@@ -197,55 +202,30 @@ final class GameTests: XCTestCase {
     }
 
     func test_rollGameOfAllOnes_exceptLastRoll_gameIsNotFinished() {
-        var completionCount = 0
-        game = Game {
-            completionCount += 1
-        }
-
         rollMany(pins: 1, times: 19)
 
         XCTAssertEqual(completionCount, 0)
     }
 
     func test_rollGameOfAllStrikes_exceptLastRoll_gameIsNotFinished() {
-        var completionCount = 0
-        game = Game {
-            completionCount += 1
-        }
-
         rollMany(pins: 10, times: 11)
 
         XCTAssertEqual(completionCount, 0)
     }
 
     func test_rollGameOfAllSpares_exceptLastRoll_gameIsNotFinished() {
-        var completionCount = 0
-        game = Game {
-            completionCount += 1
-        }
-
         rollMany(pins: 5, times: 20)
 
         XCTAssertEqual(completionCount, 0)
     }
 
     func test_rollGameOfAllOnes_gameIsFinished() {
-        var completionCount = 0
-        game = Game {
-            completionCount += 1
-        }
-
         rollMany(pins: 1, times: 20)
 
         XCTAssertEqual(completionCount, 1)
     }
 
     func test_rollGameOfStrikes_gameIsFinished() {
-        var completionCount = 0
-        game = Game {
-            completionCount += 1
-        }
-
         rollMany(pins: 10, times: 11)
         rollStrike()
 
@@ -253,11 +233,6 @@ final class GameTests: XCTestCase {
     }
 
     func test_rollGameWithLastFrameSpares_gameIsFinished() {
-        var completionCount = 0
-        game = Game {
-            completionCount += 1
-        }
-
         rollMany(pins: 10, times: 9)
         rollSpare()
         game.roll(1)
