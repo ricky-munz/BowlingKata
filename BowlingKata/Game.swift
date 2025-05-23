@@ -9,6 +9,7 @@ import Foundation
 
 public final class Game {
 
+    private let completion: () -> Void
     private var frameIndex: Int
     private var isFinalFrame: Bool { frameIndex == 9 }
     private var currentFrame: Frame { frames[frameIndex] }
@@ -16,8 +17,11 @@ public final class Game {
 
     public let frames: [Frame]
 
-    public init() {
+    public init(completion: @escaping () -> Void = {}) {
+        self.completion = completion
+
         frames = (0..<10).map { _ in Frame() }
+
         for (i, frame) in frames.enumerated() {
             if i > 0 {
                 frame.previousFrame = frames[i - 1]
@@ -26,6 +30,7 @@ public final class Game {
                 frame.nextFrame = frames[i + 1]
             }
         }
+
         frameIndex = 0
     }
 
@@ -118,10 +123,13 @@ public final class Game {
 
         if !isFinalFrame {
             frameIndex += 1
+        } else if !currentFrame.isStrike {
+            completion()
         }
     }
 
     private func roll3(_ pins: Int) {
         currentFrame.roll3 = pins
+        completion()
     }
 }
