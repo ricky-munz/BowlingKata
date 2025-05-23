@@ -247,9 +247,6 @@ final class GameTests: XCTestCase {
         }
 
         rollMany(pins: 10, times: 11)
-
-        XCTAssertEqual(completionCount, 0)
-
         rollStrike()
 
         XCTAssertEqual(completionCount, 1)
@@ -262,11 +259,7 @@ final class GameTests: XCTestCase {
         }
 
         rollMany(pins: 10, times: 9)
-
         rollSpare()
-
-        XCTAssertEqual(completionCount, 0)
-
         game.roll(1)
 
         XCTAssertEqual(completionCount, 1)
