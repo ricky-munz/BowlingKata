@@ -55,6 +55,15 @@ public final class Game {
         }
 
         var isFinal: Bool
+        var isComplete: Bool {
+            if roll2 == nil, roll3 == nil, isStrike, !isFinal {
+                return true
+            } else if roll2 != nil, roll3 == nil, !isFinal {
+                return true
+            }
+
+            return false
+        }
 
         private var localScore: Int? {
             guard let bonusScore else {
@@ -118,9 +127,7 @@ public final class Game {
     }
 
     private func updateFrameIndex() {
-        if currentFrame.roll2 == nil, currentFrame.roll3 == nil, currentFrame.isStrike, !currentFrame.isFinal {
-            frameIndex += 1
-        } else if currentFrame.roll2 != nil, currentFrame.roll3 == nil, !currentFrame.isFinal {
+        if currentFrame.isComplete {
             frameIndex += 1
         }
     }
