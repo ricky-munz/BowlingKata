@@ -18,7 +18,7 @@ public final class Game {
     public var endGame: () -> Void = {}
 
     public init() {
-        frames = (0..<10).map { _ in Frame() }
+        frames = (0..<10).map { Frame(isFinal: $0 == 9) }
 
         for (i, frame) in frames.enumerated() {
             if i > 0 {
@@ -55,6 +55,8 @@ public final class Game {
             }
             return roll1 + roll2 == 10
         }
+
+        var isFinal: Bool
 
         private var localScore: Int? {
             guard let bonusScore else {
@@ -96,6 +98,10 @@ public final class Game {
             return 0
         }
 
+        init(isFinal: Bool) {
+            self.isFinal = isFinal
+        }
+
         func update(pins: Int) {
             if roll1 == nil {
                 roll1 = pins
@@ -114,9 +120,9 @@ public final class Game {
     }
 
     private func updateFrameIndex() {
-        if currentFrame.roll2 == nil, currentFrame.roll3 == nil, currentFrame.isStrike, !isFinalFrame {
+        if currentFrame.roll2 == nil, currentFrame.roll3 == nil, currentFrame.isStrike, !currentFrame.isFinal {
             frameIndex += 1
-        } else if currentFrame.roll2 != nil, currentFrame.roll3 == nil, !isFinalFrame {
+        } else if currentFrame.roll2 != nil, currentFrame.roll3 == nil, !currentFrame.isFinal {
             frameIndex += 1
         }
     }
@@ -124,7 +130,7 @@ public final class Game {
     private func evaluateGame() {
         if currentFrame.roll3 != nil {
             endGame()
-        } else if currentFrame.roll2 != nil, isFinalFrame, !currentFrame.isStrike, !currentFrame.isSpare {
+        } else if currentFrame.roll2 != nil, currentFrame.isFinal, !currentFrame.isStrike, !currentFrame.isSpare {
             endGame()
         }
     }
