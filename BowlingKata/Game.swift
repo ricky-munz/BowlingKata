@@ -99,12 +99,7 @@ public final class Game {
 
     public func roll(_ pins: Int) {
         updateFrame(pins: pins)
-
-        if currentFrame.roll3 != nil {
-            endGame()
-        } else if currentFrame.roll2 != nil, isFinalFrame, !currentFrame.isStrike, !currentFrame.isSpare {
-            endGame()
-        }
+        evaluateGame()
     }
 
     private func updateFrame(pins: Int) {
@@ -114,6 +109,14 @@ public final class Game {
             roll2(pins)
         } else {
             roll3(pins)
+        }
+    }
+
+    private func evaluateGame() {
+        if currentFrame.roll3 != nil {
+            endGame()
+        } else if currentFrame.roll2 != nil, isFinalFrame, !currentFrame.isStrike, !currentFrame.isSpare {
+            endGame()
         }
     }
     
