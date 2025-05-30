@@ -12,8 +12,7 @@ public final class Game {
     public let frames: [Frame]
     public var endGame: () -> Void = {}
 
-    private var frameIndex: Int
-    private var currentFrame: Frame { frames[frameIndex] }
+    private var currentFrame: Frame
 
     public init() {
         frames = (0..<10).map { Frame(isFinal: $0 == 9) }
@@ -27,7 +26,7 @@ public final class Game {
             }
         }
 
-        frameIndex = 0
+        currentFrame = frames[0]
     }
 
     public class Frame {
@@ -135,8 +134,8 @@ public final class Game {
     }
 
     private func updateFrameIndex() {
-        if !currentFrame.isFinal, currentFrame.isComplete {
-            frameIndex += 1
+        if !currentFrame.isFinal, currentFrame.isComplete, let nextFrame = currentFrame.nextFrame {
+            currentFrame = nextFrame
         }
     }
 
