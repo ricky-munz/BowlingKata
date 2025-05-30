@@ -105,11 +105,11 @@ public final class Game {
 
     private func updateFrame(pins: Int) {
         if currentFrame.roll1 == nil {
-            roll1(pins)
+            currentFrame.roll1 = pins
         } else if currentFrame.roll2 == nil {
-            roll2(pins)
+            currentFrame.roll2 = pins
         } else {
-            roll3(pins)
+            currentFrame.roll3 = pins
         }
     }
 
@@ -127,21 +127,5 @@ public final class Game {
         } else if currentFrame.roll2 != nil, isFinalFrame, !currentFrame.isStrike, !currentFrame.isSpare {
             endGame()
         }
-    }
-
-    private func roll1(_ pins: Int) {
-        currentFrame.roll1 = pins
-
-        if currentFrame.isStrike, !isFinalFrame {
-            currentFrame.nextFrame = nextFrame
-        }
-    }
-
-    private func roll2(_ pins: Int) {
-        currentFrame.roll2 = pins
-    }
-
-    private func roll3(_ pins: Int) {
-        currentFrame.roll3 = pins
     }
 }
