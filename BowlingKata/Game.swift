@@ -133,7 +133,7 @@ public final class Game {
     }
 
     private func updateFrameIndex() {
-        if !currentFrame.isFinal, currentFrame.isComplete, let nextFrame = currentFrame.nextFrame {
+        if currentFrame.isComplete, let nextFrame = currentFrame.nextFrame {
             currentFrame = nextFrame
         }
     }
