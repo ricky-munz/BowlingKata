@@ -99,6 +99,7 @@ public final class Game {
 
     public func roll(_ pins: Int) {
         updateFrame(pins: pins)
+        updateFrameIndex()
         evaluateGame()
     }
 
@@ -110,7 +111,9 @@ public final class Game {
         } else {
             roll3(pins)
         }
+    }
 
+    private func updateFrameIndex() {
         if currentFrame.roll2 == nil, currentFrame.roll3 == nil, currentFrame.isStrike, !isFinalFrame {
             frameIndex += 1
         } else if currentFrame.roll2 != nil, currentFrame.roll3 == nil, !isFinalFrame {
