@@ -105,7 +105,10 @@ public final class Game {
         } else {
             roll3(pins)
         }
+
         if currentFrame.roll3 != nil {
+            endGame()
+        } else if currentFrame.roll2 != nil, isFinalFrame, !currentFrame.isStrike, !currentFrame.isSpare {
             endGame()
         }
     }
@@ -124,8 +127,6 @@ public final class Game {
 
         if !isFinalFrame {
             frameIndex += 1
-        } else if !currentFrame.isStrike, !currentFrame.isSpare {
-            endGame()
         }
     }
 
