@@ -22,7 +22,7 @@ class ViewModel {
             frame.score.map(String.init) ?? ""
         }
 
-        game.completion = {
+        game.endGame = {
             self.isGameCompleted = true
         }
     }

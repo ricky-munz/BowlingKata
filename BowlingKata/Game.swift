@@ -15,10 +15,10 @@ public final class Game {
     private var nextFrame: Frame { isFinalFrame ? frames[frameIndex] : frames[frameIndex + 1] }
 
     public let frames: [Frame]
-    public var completion: () -> Void
+    public var endGame: () -> Void
 
     public init(completion: @escaping () -> Void = {}) {
-        self.completion = completion
+        self.endGame = completion
 
         frames = (0..<10).map { _ in Frame() }
 
@@ -124,12 +124,12 @@ public final class Game {
         if !isFinalFrame {
             frameIndex += 1
         } else if !currentFrame.isStrike, !currentFrame.isSpare {
-            completion()
+            endGame()
         }
     }
 
     private func roll3(_ pins: Int) {
         currentFrame.roll3 = pins
-        completion()
+        endGame()
     }
 }
