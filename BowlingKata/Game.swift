@@ -15,7 +15,7 @@ public final class Game {
     private var currentFrame: Frame
 
     public init() {
-        frames = (0..<10).map { Frame(isFinal: $0 == 9) }
+        frames = (0..<10).map { _ in Frame() }
 
         for (i, frame) in frames.enumerated() {
             if i > 0 {
@@ -53,7 +53,10 @@ public final class Game {
             return roll1 + roll2 == 10
         }
 
-        var isFinal: Bool
+        var isFinal: Bool {
+            nextFrame == nil
+        }
+
         var isComplete: Bool {
             if isFinal {
                 if roll3 != nil {
@@ -110,10 +113,6 @@ public final class Game {
                 return nextFrame?.roll1
             }
             return 0
-        }
-
-        init(isFinal: Bool) {
-            self.isFinal = isFinal
         }
 
         func update(pins: Int) {
