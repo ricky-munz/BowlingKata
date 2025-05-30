@@ -14,8 +14,8 @@ final class GameTests: XCTestCase {
 
     override func setUp() {
         super.setUp()
-
-        game = Game {
+        game = Game()
+        game.endGame = {
             self.completionCount += 1
         }
     }

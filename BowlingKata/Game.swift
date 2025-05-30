@@ -15,11 +15,9 @@ public final class Game {
     private var nextFrame: Frame { isFinalFrame ? frames[frameIndex] : frames[frameIndex + 1] }
 
     public let frames: [Frame]
-    public var endGame: () -> Void
+    public var endGame: () -> Void = {}
 
-    public init(completion: @escaping () -> Void = {}) {
-        self.endGame = completion
-
+    public init() {
         frames = (0..<10).map { _ in Frame() }
 
         for (i, frame) in frames.enumerated() {
