@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		9C36223D2DEA3A4C00BE822A /* Frame.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C36223C2DEA3A4C00BE822A /* Frame.swift */; };
+		9C36223E2DEA3A4C00BE822A /* Frame.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C36223C2DEA3A4C00BE822A /* Frame.swift */; };
 		9C53677F2D0B26560074B211 /* BowlingKata.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9CEAC9DB2CF0C2B6002FC2D4 /* BowlingKata.framework */; };
 		9C5367802D0B26560074B211 /* BowlingKata.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 9CEAC9DB2CF0C2B6002FC2D4 /* BowlingKata.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		9CEAC9E42CF0C2B6002FC2D4 /* BowlingKata.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9CEAC9DB2CF0C2B6002FC2D4 /* BowlingKata.framework */; };
@@ -55,6 +57,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		9C36223C2DEA3A4C00BE822A /* Frame.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Frame.swift; sourceTree = "<group>"; };
 		9C5367482D0B20530074B211 /* BowlingKata_iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BowlingKata_iOS.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9C5367572D0B20550074B211 /* BowlingKata_iOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BowlingKata_iOSTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		9C5367722D0B230D0074B211 /* BowlingKata_iOS.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; path = BowlingKata_iOS.xctestplan; sourceTree = "<group>"; };
@@ -140,6 +143,7 @@
 			children = (
 				9CEAC9DE2CF0C2B6002FC2D4 /* BowlingKata.h */,
 				9CEAC9F32CF0C7F1002FC2D4 /* Game.swift */,
+				9C36223C2DEA3A4C00BE822A /* Frame.swift */,
 			);
 			path = BowlingKata;
 			sourceTree = "<group>";
@@ -347,6 +351,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				9CEAC9F42CF0C7F1002FC2D4 /* Game.swift in Sources */,
+				9C36223E2DEA3A4C00BE822A /* Frame.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -354,6 +359,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9C36223D2DEA3A4C00BE822A /* Frame.swift in Sources */,
 				9CEAC9F72CF0C839002FC2D4 /* Game.swift in Sources */,
 				9CEAC9F62CF0C81A002FC2D4 /* GameTests.swift in Sources */,
 			);
