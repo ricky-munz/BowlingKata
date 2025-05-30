@@ -105,6 +105,9 @@ public final class Game {
         } else {
             roll3(pins)
         }
+        if currentFrame.roll3 != nil {
+            endGame()
+        }
     }
 
     private func roll1(_ pins: Int) {
@@ -128,6 +131,5 @@ public final class Game {
 
     private func roll3(_ pins: Int) {
         currentFrame.roll3 = pins
-        endGame()
     }
 }
