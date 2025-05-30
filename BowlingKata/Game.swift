@@ -56,10 +56,18 @@ public final class Game {
 
         var isFinal: Bool
         var isComplete: Bool {
-            if roll2 == nil, roll3 == nil, isStrike, !isFinal {
-                return true
-            } else if roll2 != nil, roll3 == nil, !isFinal {
-                return true
+            if isFinal {
+                if roll3 != nil {
+                    return true
+                } else if roll2 != nil, !isStrike, !isSpare {
+                    return true
+                }
+            } else {
+                if isStrike {
+                    return true
+                } else if roll2 != nil {
+                    return true
+                }
             }
 
             return false
@@ -127,15 +135,13 @@ public final class Game {
     }
 
     private func updateFrameIndex() {
-        if currentFrame.isComplete {
+        if !currentFrame.isFinal, currentFrame.isComplete {
             frameIndex += 1
         }
     }
 
     private func evaluateGame() {
-        if currentFrame.roll3 != nil {
-            endGame()
-        } else if currentFrame.roll2 != nil, currentFrame.isFinal, !currentFrame.isStrike, !currentFrame.isSpare {
+        if currentFrame.isFinal, currentFrame.isComplete {
             endGame()
         }
     }
