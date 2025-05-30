@@ -45,6 +45,17 @@ public final class Game {
             return localScore + previousScore
         }
 
+        public var isStrike: Bool {
+            roll1 == 10
+        }
+
+        public var isSpare: Bool {
+            guard let roll1, let roll2 else {
+                return false
+            }
+            return roll1 + roll2 == 10
+        }
+
         private var localScore: Int? {
             guard let bonusScore else {
                 return nil
@@ -59,17 +70,6 @@ public final class Game {
 
         private var previousScore: Int {
             previousFrame?.score ?? 0
-        }
-
-        public var isStrike: Bool {
-            roll1 == 10
-        }
-
-        public var isSpare: Bool {
-            guard let roll1, let roll2 else {
-                return false
-            }
-            return roll1 + roll2 == 10
         }
 
         private var nextTwoRolls: Int? {
