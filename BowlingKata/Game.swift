@@ -95,22 +95,22 @@ public final class Game {
             }
             return 0
         }
+
+        func update(pins: Int) {
+            if roll1 == nil {
+                roll1 = pins
+            } else if roll2 == nil {
+                roll2 = pins
+            } else {
+                roll3 = pins
+            }
+        }
     }
 
     public func roll(_ pins: Int) {
-        updateFrame(pins: pins)
+        currentFrame.update(pins: pins)
         updateFrameIndex()
         evaluateGame()
-    }
-
-    private func updateFrame(pins: Int) {
-        if currentFrame.roll1 == nil {
-            currentFrame.roll1 = pins
-        } else if currentFrame.roll2 == nil {
-            currentFrame.roll2 = pins
-        } else {
-            currentFrame.roll3 = pins
-        }
     }
 
     private func updateFrameIndex() {
