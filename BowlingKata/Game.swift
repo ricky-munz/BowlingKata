@@ -9,11 +9,11 @@ import Foundation
 
 public final class Game {
 
-    private var frameIndex: Int
-    private var currentFrame: Frame { frames[frameIndex] }
-
     public let frames: [Frame]
     public var endGame: () -> Void = {}
+
+    private var frameIndex: Int
+    private var currentFrame: Frame { frames[frameIndex] }
 
     public init() {
         frames = (0..<10).map { Frame(isFinal: $0 == 9) }
