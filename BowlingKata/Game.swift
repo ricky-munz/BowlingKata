@@ -110,6 +110,12 @@ public final class Game {
         } else {
             roll3(pins)
         }
+
+        if currentFrame.roll2 == nil, currentFrame.roll3 == nil, currentFrame.isStrike, !isFinalFrame {
+            frameIndex += 1
+        } else if currentFrame.roll2 != nil, currentFrame.roll3 == nil, !isFinalFrame {
+            frameIndex += 1
+        }
     }
 
     private func evaluateGame() {
@@ -119,22 +125,17 @@ public final class Game {
             endGame()
         }
     }
-    
+
     private func roll1(_ pins: Int) {
         currentFrame.roll1 = pins
 
         if currentFrame.isStrike, !isFinalFrame {
             currentFrame.nextFrame = nextFrame
-            frameIndex += 1
         }
     }
 
     private func roll2(_ pins: Int) {
         currentFrame.roll2 = pins
-
-        if !isFinalFrame {
-            frameIndex += 1
-        }
     }
 
     private func roll3(_ pins: Int) {
