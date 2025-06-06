@@ -23,9 +23,7 @@ class ViewModel {
     private var frameIndex = 0
     
     init() {
-        let newGame = Game()
-        
-        game = newGame
+        game = Game()
         
         game.endGame = {
             self.isGameCompleted = true
