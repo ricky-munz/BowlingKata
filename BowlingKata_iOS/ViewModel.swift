@@ -18,18 +18,19 @@ class ViewModel {
             frame.score.map(String.init) ?? ""
         }
     }
-
-    private var game: Game
+    
     private var frameIndex = 0
     
-    init() {
-        game = Game()
+    @ObservationIgnored
+    private lazy var game: Game = {
+        let newGame = Game()
         
-        game.endGame = {
+        newGame.endGame = {
             self.isGameCompleted = true
         }
-    }
-    
+        return newGame
+    }()
+
     func roll(_ roll: Int) {
         game.roll(roll)
         
