@@ -22,14 +22,9 @@ class ViewModel {
     private var frameIndex = 0
     
     @ObservationIgnored
-    private lazy var game: Game = {
-        let newGame = Game()
-        
-        newGame.endGame = {
-            self.isGameCompleted = true
-        }
-        return newGame
-    }()
+    private lazy var game = Game(endGame: {
+        self.isGameCompleted = true
+    })
 
     func roll(_ roll: Int) {
         game.roll(roll)
@@ -62,10 +57,9 @@ class ViewModel {
     func reset() {
         rollScores = []
         isGameCompleted = false
-        game = Game()
-        game.endGame = {
+        game = Game(endGame: {
             self.isGameCompleted = true
-        }
+        })
     }
 
     private func scoreFinal(frame: Game.Frame) {

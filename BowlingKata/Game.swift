@@ -10,11 +10,11 @@ import Foundation
 public final class Game {
 
     public let frames: [Frame]
-    public var endGame: () -> Void = {}
+    private let endGame: () -> Void
 
     private var currentFrame: Frame
 
-    public init() {
+    public init(endGame: @escaping () -> Void = {}) {
         frames = (0..<10).map { _ in Frame() }
 
         for (i, frame) in frames.enumerated() {
@@ -27,6 +27,7 @@ public final class Game {
         }
 
         currentFrame = frames[0]
+        self.endGame = endGame
     }
 
     public func roll(_ pins: Int) {
