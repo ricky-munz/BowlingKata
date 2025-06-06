@@ -114,6 +114,8 @@ struct BowlingKata_iOSTests {
 
         #expect(sut.rollScores.suffix(3) == expectedScores)
     }
+    
+    // MARK: Helpers
 
     func makeFrameScores(firstScore: String = "", secondScore: String = "") -> [String] {
         [firstScore, secondScore, "", "", "", "", "", "", "", ""]
