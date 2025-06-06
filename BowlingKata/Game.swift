@@ -31,11 +31,11 @@ public final class Game {
 
     public func roll(_ pins: Int) {
         currentFrame.update(pins: pins)
-        updateFrameIndex()
+        setCurrentFrame()
         evaluateGame()
     }
 
-    private func updateFrameIndex() {
+    private func setCurrentFrame() {
         if currentFrame.isComplete, let nextFrame = currentFrame.nextFrame {
             currentFrame = nextFrame
         }
