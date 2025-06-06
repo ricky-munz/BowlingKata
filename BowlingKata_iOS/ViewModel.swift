@@ -58,6 +58,12 @@ class ViewModel {
             frame.score.map(String.init) ?? ""
         }
     }
+    
+    func reset() {
+        frameScores = Array(repeating: "", count: 10)
+        rollScores = []
+        isGameCompleted = false
+    }
 
     private func scoreFinal(frame: Game.Frame) {
         guard let roll1 = frame.roll1 else { return }

@@ -115,6 +115,21 @@ struct BowlingKata_iOSTests {
         #expect(sut.rollScores.suffix(3) == expectedScores)
     }
     
+    @Test
+    func viewModel_reset_clearsFramesAndScores() {
+        rollStrikesForNineFrames()
+        sut.roll(10)
+        sut.roll(10)
+        sut.roll(10)
+        
+        sut.reset()
+        
+        #expect(sut.frameScores == Array(repeating: "", count: 10))
+        #expect(sut.rollScores == [])
+        #expect(sut.isGameCompleted == false)
+    }
+    }
+    
     // MARK: Helpers
 
     func makeFrameScores(firstScore: String = "", secondScore: String = "") -> [String] {
