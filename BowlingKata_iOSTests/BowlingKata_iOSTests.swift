@@ -128,6 +128,19 @@ struct BowlingKata_iOSTests {
         #expect(sut.rollScores == [])
         #expect(sut.isGameCompleted == false)
     }
+    
+    @Test
+    func viewModel_reset_startsNewGame() {
+        rollStrikesForNineFrames()
+        sut.roll(10)
+        sut.roll(10)
+        sut.roll(10)
+        
+        sut.reset()
+        sut.roll(4)
+        
+        #expect(sut.frameScores == makeFrameScores())
+        #expect(sut.rollScores == ["4"])
     }
     
     // MARK: Helpers

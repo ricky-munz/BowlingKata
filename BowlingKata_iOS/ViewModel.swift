@@ -14,14 +14,18 @@ class ViewModel {
     var rollScores: [String] = []
     var isGameCompleted: Bool = false
 
-    private let game = Game()
+    private var game: Game
     private var frameIndex = 0
     
     init() {
-        frameScores = game.frames.map { frame in
+        let newGame = Game()
+        
+        frameScores = newGame.frames.map { frame in
             frame.score.map(String.init) ?? ""
         }
-
+        
+        game = newGame
+        
         game.endGame = {
             self.isGameCompleted = true
         }
@@ -63,6 +67,10 @@ class ViewModel {
         frameScores = Array(repeating: "", count: 10)
         rollScores = []
         isGameCompleted = false
+        game = Game()
+        game.endGame = {
+            self.isGameCompleted = true
+        }
     }
 
     private func scoreFinal(frame: Game.Frame) {
