@@ -10,19 +10,20 @@ import BowlingKata
 
 @Observable
 class ViewModel {
-    var frameScores: [String]
     var rollScores: [String] = []
     var isGameCompleted: Bool = false
+    
+    var frameScores: [String] {
+        game.frames.map { frame in
+            frame.score.map(String.init) ?? ""
+        }
+    }
 
     private var game: Game
     private var frameIndex = 0
     
     init() {
         let newGame = Game()
-        
-        frameScores = newGame.frames.map { frame in
-            frame.score.map(String.init) ?? ""
-        }
         
         game = newGame
         
@@ -57,14 +58,9 @@ class ViewModel {
                 rollScores.append(String(roll2))
             }
         }
-        
-        frameScores = game.frames.map { frame in
-            frame.score.map(String.init) ?? ""
-        }
     }
     
     func reset() {
-        frameScores = Array(repeating: "", count: 10)
         rollScores = []
         isGameCompleted = false
         game = Game()
