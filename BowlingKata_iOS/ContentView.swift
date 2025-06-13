@@ -68,8 +68,9 @@ struct ContentView: View {
                 Text("Pins:")
 
                 TextField(text: $pins) {}
-                .textFieldStyle(.roundedBorder)
-                .fixedSize()
+                    .keyboardType(.decimalPad)
+                    .textFieldStyle(.roundedBorder)
+                    .fixedSize()
             }
             .padding(.horizontal)
 
