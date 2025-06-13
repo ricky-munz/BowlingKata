@@ -12,6 +12,7 @@ import BowlingKata
 class ViewModel {
     var rollScores: [String] = []
     var isGameCompleted: Bool = false
+    var isResetPresented: Bool = false
     var frameScores: [String] = Array(repeating: "", count: 10)
 
     private var frameIndex = 0

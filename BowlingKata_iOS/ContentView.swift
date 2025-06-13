@@ -14,7 +14,7 @@ struct ContentView: View {
     var body: some View {
         VStack {
             Button {
-                
+                viewModel.isResetPresented = true
             } label: {
                 Image(systemName: "arrow.counterclockwise")
             }
@@ -87,6 +87,12 @@ struct ContentView: View {
             Button("OK", role: .cancel) {
                 viewModel.reset()
             }
+        }
+        .alert("Reset?", isPresented: $viewModel.isResetPresented) {
+            Button("OK", role: .destructive) {
+                viewModel.reset()
+            }
+            Button("Cancel", role: .cancel) {}
         }
     }
 }
