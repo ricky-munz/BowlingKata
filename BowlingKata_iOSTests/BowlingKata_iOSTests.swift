@@ -142,7 +142,27 @@ struct BowlingKata_iOSTests {
         #expect(sut.frameScores == makeFrameScores())
         #expect(sut.rollScores == ["4"])
     }
-    
+
+    @Test
+    func viewModel_roll_withValidPins_rolls() {
+        sut.pins = "1"
+        sut.roll()
+        #expect(sut.rollScores == ["1"])
+    }
+
+    @Test
+    func viewModel_roll_withInvalidPins_presentsAlert() {
+        sut.pins = "a"
+        sut.roll()
+        #expect(sut.rollScores == [])
+        sut.pins = "-1"
+        sut.roll()
+        #expect(sut.rollScores == [])
+        sut.pins = "11"
+        sut.roll()
+        #expect(sut.rollScores == [])
+    }
+
     // MARK: Helpers
 
     func makeFrameScores(firstScore: String = "", secondScore: String = "") -> [String] {
