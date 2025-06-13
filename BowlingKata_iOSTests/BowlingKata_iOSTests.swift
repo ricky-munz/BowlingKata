@@ -147,20 +147,20 @@ struct BowlingKata_iOSTests {
     func viewModel_roll_withValidPins_rolls() {
         sut.pins = "1"
         sut.roll()
-        #expect(sut.isRollValid)
+        #expect(!sut.isRollInvalid)
     }
 
     @Test
     func viewModel_roll_withInvalidPins_presentsAlert() {
         sut.pins = "a"
         sut.roll()
-        #expect(!sut.isRollValid)
+        #expect(sut.isRollInvalid)
         sut.pins = "-1"
         sut.roll()
-        #expect(!sut.isRollValid)
+        #expect(sut.isRollInvalid)
         sut.pins = "11"
         sut.roll()
-        #expect(!sut.isRollValid)
+        #expect(sut.isRollInvalid)
     }
 
     // MARK: Helpers

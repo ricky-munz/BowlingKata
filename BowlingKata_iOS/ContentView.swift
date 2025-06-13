@@ -74,10 +74,7 @@ struct ContentView: View {
             .padding(.horizontal)
 
             Button {
-                guard let pinsInt = Int(viewModel.pins) else {
-                    return
-                }
-                viewModel.roll(pinsInt)
+                viewModel.roll()
             } label: {
                 Text("Roll")
             }
@@ -94,6 +91,9 @@ struct ContentView: View {
                 viewModel.reset()
             }
             Button("Cancel", role: .cancel) {}
+        }
+        .alert("Invalid Input", isPresented: $viewModel.isRollInvalid) {
+            Button("OK") {}
         }
     }
 }
