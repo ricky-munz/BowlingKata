@@ -13,6 +13,7 @@ class ViewModel {
     var rollScores: [String] = []
     var frameScores: [String] = Array(repeating: "", count: 10)
     var pins: String = ""
+    var isRollValid: Bool = true
     var isGameCompleted: Bool = false
     var isResetPresented: Bool = false
 
@@ -27,6 +28,7 @@ class ViewModel {
             pinsInt >= 0,
             pinsInt <= 10
         else {
+            isRollValid = false
             return
         }
 
