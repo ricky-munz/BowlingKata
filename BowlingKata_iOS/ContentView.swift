@@ -8,7 +8,6 @@
 import SwiftUI
 
 struct ContentView: View {
-    @State var pins: String = ""
     @State private var viewModel = ViewModel()
 
     var body: some View {
@@ -67,7 +66,7 @@ struct ContentView: View {
             HStack {
                 Text("Pins:")
 
-                TextField(text: $pins) {}
+                TextField(text: $viewModel.pins) {}
                     .keyboardType(.decimalPad)
                     .textFieldStyle(.roundedBorder)
                     .fixedSize()
@@ -75,7 +74,7 @@ struct ContentView: View {
             .padding(.horizontal)
 
             Button {
-                guard let pinsInt = Int(pins) else {
+                guard let pinsInt = Int(viewModel.pins) else {
                     return
                 }
                 viewModel.roll(pinsInt)
