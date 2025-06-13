@@ -78,7 +78,9 @@ struct ContentView: View {
             .disabled(viewModel.isGameCompleted)
         }
         .alert("Game over", isPresented: $viewModel.isGameCompleted) {
-            Button("OK", role: .cancel) {}
+            Button("OK", role: .cancel) {
+                viewModel.reset()
+            }
         }
     }
 }
