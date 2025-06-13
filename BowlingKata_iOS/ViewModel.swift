@@ -23,16 +23,13 @@ class ViewModel {
     private lazy var game = makeNewGame()
 
     func roll() {
-        guard
-            let pinsInt = Int(pins),
-            pinsInt >= 0,
-            pinsInt <= 10
-        else {
+        if let pinsInt = Int(pins),
+           pinsInt >= 0,
+           pinsInt <= 10 {
+            roll(pinsInt)
+        } else {
             isRollValid = false
-            return
         }
-
-        roll(pinsInt)
     }
 
     func roll(_ roll: Int) {
