@@ -11,9 +11,9 @@ import BowlingKata
 @Observable
 class ViewModel {
     var rollScores: [String] = []
+    var frameScores: [String] = Array(repeating: "", count: 10)
     var isGameCompleted: Bool = false
     var isResetPresented: Bool = false
-    var frameScores: [String] = Array(repeating: "", count: 10)
 
     private var frameIndex = 0
     
