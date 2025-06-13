@@ -13,6 +13,12 @@ struct ContentView: View {
 
     var body: some View {
         VStack {
+            Button {
+                
+            } label: {
+                Image(systemName: "arrow.counterclockwise")
+            }
+
             Grid(horizontalSpacing: 0) {
                 GridRow {
                     ForEach(Array(viewModel.frameScores.enumerated()), id: \.offset) { frameIndex, score in
